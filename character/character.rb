@@ -147,7 +147,11 @@ def getCharacterHairColor(name)
   characters.each do |character|
     #puts character['name']
     if name == character['name']
-      return "The hair color of " + name + " is " + character['hair_color'] + '. Anything else?'
+      if character['hair_color'] == none
+        return name + " has no hair color."
+      else
+        return "The hair color of " + name + " is " + character['hair_color'] + '. Anything else?'
+      end 
     end 
   end 
   return "Sorry. I cannot find that character's hair color."
