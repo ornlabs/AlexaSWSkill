@@ -83,10 +83,11 @@ post '/' do
     puts film
     filmCrawl = getFilmCrawl(films, film)
 
-    if filmCrawl
-      response = storeSessionAttribute(@input, filmCrawl, true, false)
+    puts "---Film Crawl---"
+    puts filmCrawl
+    response = storeSessionAttribute(@input, filmCrawl, true, false)
 
-    end 
+    puts response
     JSON.generate(response)
   end
 end 
