@@ -112,6 +112,7 @@ def getHomeWorld(characters, name)
       puts url_page
       homeWorld = HTTParty.get(url)['name']
       puts homeWorld
+      return homeWorld
     end 
   end 
 
