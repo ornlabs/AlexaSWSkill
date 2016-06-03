@@ -44,10 +44,8 @@ end
 
 
 def getCharacterHeight(name)
-  #puts name
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
     if name == character['name']
       return "The height of " + name + " is " + character['height'] + ' centimeters. Anything else?'
     end 
@@ -55,7 +53,8 @@ def getCharacterHeight(name)
   return "Sorry. I cannot find that character's height."
 end 
 
-def getCharacterHairColor(characters, name)
+def getCharacterHairColor(name)
+  characters = getAllCharacters()
   characters.each do |character|
     #puts character['name']
     if name == character['name']
@@ -65,8 +64,8 @@ def getCharacterHairColor(characters, name)
   return "Sorry. I cannot find that character's height."
 end
 
-def getCharacterHomeWorld(characters, name)
-
+def getCharacterHomeWorld(name)
+  characters = getAllCharacters()
   characters.each do |character|
     #puts character['name']
     if name == character['name']
@@ -81,8 +80,8 @@ def getCharacterHomeWorld(characters, name)
   return "Sorry. I cannot find the character's home world."
 end
 
-def getCharacterFilms(characters, name)
-
+def getCharacterFilms(name)
+  characters = getAllCharacters()
   characters.each do |character|
     #puts character['name']
     if name == character['name']
@@ -154,8 +153,8 @@ def getCharacterHairColor(characters, name)
   return "Sorry. I cannot find that character's hair color."
 end 
 
-def getCharacterSkinColor(characters, name)
-  #puts name
+def getCharacterSkinColor(name)
+  characters = getAllCharacters()
   characters.each do |character|
     #puts character['name']
     if name == character['name']
@@ -165,8 +164,8 @@ def getCharacterSkinColor(characters, name)
   return "Sorry. I cannot find that character's skin color."
 end 
 
-def getCharacterBirthYear(characters, name)
-  #puts name
+def getCharacterBirthYear(name)
+  characters = getAllCharacters()
   characters.each do |character|
     #puts character['name']
     if name == character['name']

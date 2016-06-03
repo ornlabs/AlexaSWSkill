@@ -46,21 +46,15 @@ post '/' do
     if @intent == "height"
       result = getCharacterHeight(@name)
     elsif @intent == "hair_color"
-      characters = getAllCharacters()
-      result = getCharacterHairColor(characters, @name)
+      result = getCharacterHairColor(@name)
     elsif @intent == "home_world"
-      characters = getAllCharacters()
-      result = getCharacterHomeWorld(characters, @name)
+      result = getCharacterHomeWorld(@name)
     elsif @intent == "character_films"
-      characters = getAllCharacters()
-      result = getCharacterFilms(characters, @name)
+      result = getCharacterFilms(@name)
     elsif @intent == "skin_color"
-      puts "---Skin Color---"
-      characters = getAllCharacters()
-      result = getCharacterSkinColor(characters, @name)
+      result = getCharacterSkinColor(@name)
     elsif @intent == "birth_year"
-      characters = getAllCharacters()
-      result = getCharacterBirthYear(characters, @name)
+      result = getCharacterBirthYear(@name)
     end
     
     response = storeSessionAttribute(@name, result, false, false)
