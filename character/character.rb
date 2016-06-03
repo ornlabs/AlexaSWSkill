@@ -137,7 +137,7 @@ def getCharacterHairColor(name)
   characters.each do |character|
     #puts character['name']
     if name == character['name']
-      if character['hair_color'] == none
+      if character['hair_color'] == 'none'
         return name + " has no hair color."
       else
         return "The hair color of " + name + " is " + character['hair_color'] + '. Anything else?'
