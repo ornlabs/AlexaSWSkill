@@ -49,7 +49,7 @@ post '/' do
     puts "---RESULT---"
     puts result
     
-    response = storeSessionAttribute(@name, result, false, false)
+    response = storeSessionAttribute(name, result, false, false)
     JSON.generate(response)
   # check that the intent is for character
   elsif @request_payload['request']['intent']['name'] == 'character'
