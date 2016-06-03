@@ -54,7 +54,7 @@ post '/' do
       result = getCharacterHomeWorld(characters, @name)
     elsif @intent == "character_films"
       characters = getAllCharacters()
-      result = getCharacterFilms(characters, name)
+      result = getCharacterFilms(characters, @name)
     end
     
     response = storeSessionAttribute(@name, result, false, false)

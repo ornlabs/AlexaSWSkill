@@ -112,7 +112,7 @@ def getCharacterHomeWorld(characters, name)
       #puts url_page
       homeWorld = HTTParty.get(url_page)['name']
       #puts homeWorld
-      return "The home world of " + name + " is " + character['homeworld'] + '. Anything else?'
+      return "The home world of " + name + " is " + homeWorld + '. Anything else?'
     end 
   end 
 
