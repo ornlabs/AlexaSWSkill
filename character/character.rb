@@ -187,7 +187,7 @@ def getCharacterSpecies(name)
     if name == character['name']
       url_page = character['species']
       #puts url_page
-      species = HTTParty.get(url_page)['species']
+      species = HTTParty.get(url_page)['name']
       #puts homeWorld
       return name + ' belongs to the ' + species + ' species. Anything else?'
     end 
