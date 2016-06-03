@@ -58,28 +58,23 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['person']['value']
     puts @input
 
-    films = getFilms()
-    film = isMovie(@input)
-    formattedFilm = getFilmCrawl(films, film)
+    #films = getFilms()
+    #film = isMovie(@input)
+    #formattedFilm = getFilmCrawl(films, film)
 
-    character = getCharacterName(@input)
+    character = getCharacterName(@input)     
+    if character != "Sorry. I cannot find that character."
+      result = character
+    else
+      result = "I don't know what you are talking about. Try again."
+    end 
 
-
-      #if specie != "Sorry. I cannot find that species."
-        #result = specie
-      if formattedFilm != "Sorry. I cannot find that film."
-        result = formattedFilm
-      #elsif planet != "Sorry. I cannot find that planet."
-        #result = planet
-      elsif character != "Sorry. I cannot find that character."
-        result = character
-      else
-        result = "I don't know what you are talking about. Try again."
-      end 
-  
-      response = storeSessionAttribute(@input, result, true, false)
-      JSON.generate(response)
-
+    response = storeSessionAttribute(@input, result, true, false)
+    JSON.generate(response)
+  elsif @request_payload['request']['intent']['name'] == 'movie'
+    puts "---NEW SESSION---"
+    @input = @request_payload['request']['intent']['slots']['film']['value']
+    puts @input
   end
 end 
 
