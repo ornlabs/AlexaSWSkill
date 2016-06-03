@@ -185,7 +185,9 @@ def getCharacterSpecies(name)
   characters.each do |character|
     #puts character['name']
     if name == character['name']
-      url_page = character['species']
+      url_page = character['species'][0]
+
+      puts url_page
       #puts url_page
       species = HTTParty.get(url_page)['name']
       #puts homeWorld
