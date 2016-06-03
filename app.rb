@@ -81,7 +81,7 @@ post '/' do
     filmCrawl = getFilmCrawl(films, film)
 
     if filmCrawl
-      response = storeSessionAttributeForMovie(@input, filmCrawl, true, false)
+      response = storeSessionAttribute(@input, filmCrawl, true, false)
 
     end 
     JSON.generate(response)
@@ -171,7 +171,7 @@ end
 
 get '/get-home-world' do
   characters = getAllCharacters()
-  homeWorld = getCharacterHomeWorld(characters, "Luke Skywalker")
+  homeWorld = getCharacterHomeWorld("Luke Skywalker")
   #puts characters
 end 
 
