@@ -7,6 +7,7 @@ require 'rack/env'
 #require './marvel/marvel'
 require  './character/character'
 require  './films/films'
+require  './response_parsing/response_parsing'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
@@ -185,7 +186,7 @@ end
 
 get '/get-character-skin-color' do
   characters = getAllCharacters()
-  skin_color = getCharacterSkinColor(characters, "Luke Skywalker")
+  skin_color = getCharacterSkinColor("Luke Skywalker")
 end  
 
 
@@ -223,47 +224,3 @@ end
  
 
 
-def returnJSON(text, option)
-    json = JSON.parse(
-    '{
-  
-    "version": "1.0",
-    "response": {
-      "outputSpeech": {
-        "type": "PlainText",
-        "text": "' + text + '"
-       },
-      "shouldEndSession": " ' + to_sb(option) + ' "
-      }
-    }')
-end 
-
-
-def storeSessionAttribute(input, result, newSession, endSession)
-  json = JSON.parse(
-  '{
-
-    "version": "1.0",
-    "session": {
-      "new": "' + to_sb(newSession) + '"
-    },
-    "sessionAttributes": {
-      "input": "' + input + '"
-    },
-    "response": {
-      "outputSpeech": {
-        "type": "PlainText",
-        "text": "' + result + '"
-       },
-      "shouldEndSession": "' + to_sb(endSession) + '"
-    }
-  }')
-end 
-
-def to_sb(option)
-  if option == true
-    return 'true'
-  else
-    return 'false'
-  end 
-end 

@@ -53,16 +53,6 @@ def getCharacterHeight(name)
   return "Sorry. I cannot find that character's height."
 end 
 
-def getCharacterHairColor(name)
-  characters = getAllCharacters()
-  characters.each do |character|
-    #puts character['name']
-    if name == character['name']
-      return "The hair color of " + name + " is " + character['hair_color'] + '. Anything else?'
-    end 
-  end 
-  return "Sorry. I cannot find that character's height."
-end
 
 def getCharacterHomeWorld(name)
   characters = getAllCharacters()
