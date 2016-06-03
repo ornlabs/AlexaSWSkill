@@ -82,9 +82,9 @@ post '/' do
 
     if filmCrawl
       response = storeSessionAttributeForMovie(@input, filmCrawl, true, false)
-      JSON.generate(response)
 
     end 
+    JSON.generate(response)
   end
 end 
 
@@ -166,7 +166,7 @@ end
 
 get '/get-json' do
   #puts returnJSON("hello world", true)
-  puts storeSessionAttribute("Luke Skywalker", "Test", true, false)
+  puts storeSessionAttributeForMovie("Luke Skywalker", "Test", true, false)
 end
 
 get '/get-home-world' do
