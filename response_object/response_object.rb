@@ -41,7 +41,29 @@ def storeSessionAttribute(input, result, newSession, endSession)
       "shouldEndSession": "' + to_sb(endSession) + '"
     }
   }')
-end 
+end
+
+
+def storeSessionAttributeForMovie(input, result, newSession, endSession)
+  json = JSON.parse(
+  '{
+
+    "version": "1.0",
+    "session": {
+      "new": "' + to_sb(newSession) + '"
+    },
+    "sessionAttributes": {
+      "film": "' + input + '"
+    },
+    "response": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "' + result + '"
+       },
+      "shouldEndSession": "' + to_sb(endSession) + '"
+    }
+  }')
+end  
 
 def to_sb(option)
   if option == true

@@ -75,6 +75,16 @@ post '/' do
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['film']['value']
     puts @input
+
+    films = getFilms()
+    film = isMovie(@input)
+    filmCrawl = getFilmCrawl(films, film)
+
+    if formattedFilm
+      storeSessionAttributeForMovie(@input, filmCrawl, true, false)
+      JSON.generate(response)
+
+    end 
   end
 end 
 
