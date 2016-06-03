@@ -192,3 +192,25 @@ def getCharacterHairColor(characters, name)
   return "Sorry. I cannot find that character's hair color."
 end 
 
+def getCharacterSkinColor(characters, name)
+  #puts name
+  characters.each do |character|
+    #puts character['name']
+    if name == character['name']
+      return "The skin color of " + name + " is " + character['skin_color'] + '. Anything else?'
+    end 
+  end 
+  return "Sorry. I cannot find that character's skin color."
+end 
+
+def getCharacterBirthYear(characters, name)
+  #puts name
+  characters.each do |character|
+    #puts character['name']
+    if name == character['name']
+      return "The birth year of " + name + " is " + character['birth_year'] + '. Anything else?'
+    end 
+  end 
+  return "Sorry. I cannot find that character's birth year."
+end 
+

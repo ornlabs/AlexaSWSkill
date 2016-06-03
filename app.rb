@@ -55,6 +55,13 @@ post '/' do
     elsif @intent == "character_films"
       characters = getAllCharacters()
       result = getCharacterFilms(characters, @name)
+    elsif @intent == "skin_color"
+      puts "---Skin Color---"
+      characters = getAllCharacters()
+      result = getCharacterSkinColor(characters, @name)
+    elsif @intent == "birth_year"
+      characters = getAllCharacters()
+      result = getCharacterBirthYear(characters, @name)
     end
     
     response = storeSessionAttribute(@name, result, false, false)
@@ -190,7 +197,12 @@ end
 get '/get-character-films' do
   characters = getAllCharacters()
   films = getCharacterFilms(characters, "Luke Skywalker")
-end 
+end
+
+get '/get-character-skin-color' do
+  characters = getAllCharacters()
+  skin_color = getCharacterSkinColor(characters, "Luke Skywalker")
+end  
 
 
 ########### Marvel API Code ############
