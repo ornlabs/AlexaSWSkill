@@ -169,3 +169,14 @@ def getCharacterBirthYear(name)
   return "Sorry. I cannot find that character's birth year."
 end 
 
+def getEyeColor(name)
+  characters = getAllCharacters()
+  characters.each do |character|
+    #puts character['name']
+    if name == character['name']
+      return "The eye color of " + name + " is " + character['eye_color'] + '. Anything else?'
+    end 
+  end 
+  return "Sorry. I cannot find that character's eye color."
+end 
+

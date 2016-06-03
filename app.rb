@@ -56,6 +56,8 @@ post '/' do
       result = getCharacterSkinColor(@name)
     elsif @intent == "birth_year"
       result = getCharacterBirthYear(@name)
+    elsif @intent == "eye_color"
+      result = getCharacterEyeColor(@name)
     end
     
     response = storeSessionAttribute(@name, result, false, false)
