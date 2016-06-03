@@ -228,6 +228,8 @@ def getCharacterInformation(intent, name)
     return getCharacterBirthYear(name)
   elsif intent == "eye_color"
     return getCharacterEyeColor(name)
+  elsif intent == "species"
+    return getCharacterSpecies(name)
   else
     return "I didn't catch that. Please try again. What do you want to know?"
   end

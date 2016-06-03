@@ -180,3 +180,19 @@ def getCharacterEyeColor(name)
   return "Sorry. I cannot find that character's eye color."
 end 
 
+def getCharacterSpecies(name)
+  characters = getAllCharacters()
+  characters.each do |character|
+    #puts character['name']
+    if name == character['name']
+      url_page = character['species']
+      #puts url_page
+      species = HTTParty.get(url_page)['species']
+      #puts homeWorld
+      return name + ' belongs to the ' + species + ' species. Anything else?'
+    end 
+  end 
+
+  return "Sorry. I cannot find the character's species."
+end
+
