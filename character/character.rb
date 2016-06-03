@@ -1,47 +1,7 @@
-
 class Character
   def initialize()
   end
-
-
 end
-
-def queryStarWarsForCharacters(name)
-  url = 'http://swapi.co/api/people'
-  puts url 
-  data = HTTParty.get(url)['results']
-
-  pages = []
-
-  i = 1
-
-  while i < 5 do 
-
-    puts("Loop ")
-    i += 1 
-    url_page = 'http://swapi.co/api/people/?page=' + i.to_s
-    puts url_page
-    characters = HTTParty.get(url)['results']
-    #puts characters
-
-    pages += [characters]
-
-  end 
-
-  #puts pages
-
-
-  # loop over data in json array
-  data.each do |character|
-    puts character['name']
-    if name == character['name']
-      return character['name']
-    else
-      return "Sorry. I cannot find that character."
-    end 
-  end 
-end 
-
 
 def getAllCharacters()
   charactersList = []
@@ -70,8 +30,9 @@ def getAllCharacters()
 end 
 
 
-def getCharacterName(characters, name)
+def getCharacterName(name)
   puts name
+  characters = getAllCharacters()
   characters.each do |character|
     puts character['name']
     if name == character['name']
@@ -82,8 +43,9 @@ def getCharacterName(characters, name)
 end 
 
 
-def getCharacterHeight(characters, name)
+def getCharacterHeight(name)
   #puts name
+  characters = getAllCharacters()
   characters.each do |character|
     #puts character['name']
     if name == character['name']

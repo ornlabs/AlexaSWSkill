@@ -44,8 +44,7 @@ post '/' do
     @intent = @request_payload['request']['intent']['name']
     puts @intent
     if @intent == "height"
-      characters = getAllCharacters()
-      result = getCharacterHeight(characters, @name)
+      result = getCharacterHeight(@name)
     elsif @intent == "hair_color"
       characters = getAllCharacters()
       result = getCharacterHairColor(characters, @name)
