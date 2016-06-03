@@ -7,7 +7,7 @@ require 'rack/env'
 #require './marvel/marvel'
 require  './character/character'
 require  './films/films'
-require  './response_parsing/response_parsing'
+require  './response_object/response_object'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
@@ -37,28 +37,14 @@ post '/' do
   elsif defined?(@request_payload['session']['attributes']['input']) and 
     !defined?(@request_payload['request']['intent']['slots']['person']['value'])
 
-    @name = @request_payload['session']['attributes']['input']
-    puts @name
+    name = @request_payload['session']['attributes']['input']
+    puts name
     puts "You saved an attribute"
 
     # get the intent 
-    @intent = @request_payload['request']['intent']['name']
-    puts @intent
-    if @intent == "height"
-      result = getCharacterHeight(@name)
-    elsif @intent == "hair_color"
-      result = getCharacterHairColor(@name)
-    elsif @intent == "home_world"
-      result = getCharacterHomeWorld(@name)
-    elsif @intent == "character_films"
-      result = getCharacterFilms(@name)
-    elsif @intent == "skin_color"
-      result = getCharacterSkinColor(@name)
-    elsif @intent == "birth_year"
-      result = getCharacterBirthYear(@name)
-    elsif @intent == "eye_color"
-      result = getCharacterEyeColor(@name)
-    end
+    intent = @request_payload['request']['intent']['name']
+    puts intent
+    result = getCharacterInformation(intent, name)
     
     response = storeSessionAttribute(@name, result, false, false)
     JSON.generate(response)
@@ -224,5 +210,24 @@ def getDescription(name)
 end
 
  
+def getCharacterInformation(intent, name)
+  if intent == "height"
+    return getCharacterHeight(name)
+  elsif intent == "hair_color"
+    return getCharacterHairColor(name)
+  elsif intent == "home_world"
+    return getCharacterHomeWorld(name)
+  elsif intent == "character_films"
+    return getCharacterFilms(name)
+  elsif intent == "skin_color"
+    return getCharacterSkinColor(name)
+  elsif intent == "birth_year"
+    return getCharacterBirthYear(name)
+  elsif intent == "eye_color"
+    return getCharacterEyeColor(name)
+  else
+    return "I didn't catch that. Please try again. What do you want to know?"
+  end
+  
 
-
+end 

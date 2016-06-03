@@ -1,4 +1,4 @@
-class ResponseParsing
+class ResponseObject
   def initialize()
   end
 
