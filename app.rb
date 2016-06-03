@@ -80,7 +80,7 @@ post '/' do
     film = isMovie(@input)
     filmCrawl = getFilmCrawl(films, film)
 
-    if formattedFilm
+    if filmCrawl
       storeSessionAttributeForMovie(@input, filmCrawl, true, false)
       JSON.generate(response)
 
