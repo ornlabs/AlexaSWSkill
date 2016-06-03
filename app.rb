@@ -45,6 +45,9 @@ post '/' do
     intent = @request_payload['request']['intent']['name']
     puts intent
     result = getCharacterInformation(intent, name)
+
+    puts "---RESULT---"
+    puts result
     
     response = storeSessionAttribute(@name, result, false, false)
     JSON.generate(response)
