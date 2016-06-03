@@ -142,8 +142,8 @@ def getCharacterInfoField(characters, name, option)
 end 
 
 
-def getCharacterHairColor(characters, name)
-  #puts name
+def getCharacterHairColor(name)
+  characters = getAllCharacters()
   characters.each do |character|
     #puts character['name']
     if name == character['name']
