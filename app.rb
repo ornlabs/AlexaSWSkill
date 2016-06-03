@@ -78,6 +78,9 @@ post '/' do
 
     films = getFilms()
     film = isMovie(@input)
+
+    puts "---Film---"
+    puts film
     filmCrawl = getFilmCrawl(films, film)
 
     if filmCrawl
