@@ -4,12 +4,16 @@ require 'net/http'
 require 'httparty'
 require 'digest/md5'
 require 'rack/env'
-require './marvel/marvel'
+#require './marvel/marvel'
+require  './character/character'
+require  './films/films'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
   request.body.rewind
   @request_payload = JSON.parse request.body.read
+
+  puts "---REQUEST PAYLOAD---"
   puts @request_payload
 
   # type == LaunchRequest
@@ -21,62 +25,79 @@ post '/' do
           "type": "PlainText",
           "text": "Go."
         },
-        "shouldEndSession": false
-      }
-    }'
-  else
-    @character = @request_payload['request']['intent']['slots']['person']['value']
-    puts @character
-    
-    filmOrCharacterTest = @character.downcase
-    if filmOrCharacterTest == 'the force awakens' or filmOrCharacterTest == 'a new hope' or filmOrCharacterTest == 'the empire strikes back' or filmOrCharacterTest == 'attack of the clones' or filmOrCharacterTest == 'the phantom menace' or filmOrCharacterTest == 'revenge of the sith' or filmOrCharacterTest == 'return of the jedi' 
-
-      if filmOrCharacterTest == 'attack of the clones'
-        formattedFilm = 'Attack of the Clones'
-        puts formattedFilm
-      elsif filmOrCharacterTest == 'revenge of the sith'
-        formattedFilm = 'Revenge of the Sith'
-        puts formattedFilm
-      elsif filmOrCharacterTest == 'return of the jedi'
-        formattedFilm = 'Return of the Jedi'
-        puts formattedFilm
-      else
-        puts filmOrCharacterTest
-        puts "Capitalizing "
-        formattedFilm = filmOrCharacterTest.split.map(&:capitalize).*' '
-        puts formattedFilm
-      end
-      films = getFilms()
-      result = getFilmCrawl(films, formattedFilm)
-      puts "---FILMS---"
-      puts result
-       
-    else 
-      puts "---CHARACTER---"
-      puts @character
-      characters = getAllCharacters()
-      result = getCharacterInfoString(characters, @character)
-      puts "---RESULT---"
-      puts result
-    end 
-
-    result = {
-  
-      "version": "1.0",
-      "response": {
-        "outputSpeech": {
-          "type": "PlainText",
-          "text": result
-         },
         "shouldEndSession": true
       }
-    }
-    JSON.generate(result)
+    }'
+  elsif @request_payload['request']['intent']['name'] == 'AMAZON.CancelIntent'
+
+    
+    response = returnJSON("Goodbye. See you later...", true)
+    JSON.generate(response)
+  elsif defined?(@request_payload['session']['attributes']['input']) and 
+    !defined?(@request_payload['request']['intent']['slots']['person']['value'])
+
+    @name = @request_payload['session']['attributes']['input']
+    puts @name
+    puts "You saved an attribute"
+
+    # get the intent 
+    @intent = @request_payload['request']['intent']['name']
+    puts @intent
+    if @intent == "height"
+      characters = getAllCharacters()
+      result = getCharacterHeight(characters, @name)
+    elsif @intent == "hair_color"
+      characters = getAllCharacters()
+      result = getCharacterHairColor(characters, @name)
+    end
+    
+    response = storeSessionAttribute(@name, result, false, false)
+    JSON.generate(response)
+  # check that the intent is for character
+  elsif @request_payload['request']['intent']['name'] == 'character'
+
+    puts "---NEW SESSION---"
+    @input = @request_payload['request']['intent']['slots']['person']['value']
+    puts @input
+
+      #species = getSpecies()
+      #specie = getSpecie(species, @input)
+
+
+      films = getFilms()
+      film = isMovie(@input)
+      formattedFilm = getFilmCrawl(films, film)
+
+      #planets = getPlanets()
+      #planet = getPlanet(planets, @input)
+
+      characters = getAllCharacters()
+      #character = getCharacterInfoString(characters, @input)
+      character = getCharacterName(characters, @input)
+
+
+      #if specie != "Sorry. I cannot find that species."
+        #result = specie
+      if formattedFilm != "Sorry. I cannot find that film."
+        result = formattedFilm
+      #elsif planet != "Sorry. I cannot find that planet."
+        #result = planet
+      elsif character != "Sorry. I cannot find that character."
+        result = character
+      else
+        result = "I don't know what you are talking about. Try again."
+      end 
+  
+      response = storeSessionAttribute(@input, result, true, false)
+      JSON.generate(response)
+
   end
 end 
 
 
+# Demo routes for testing purposes
 
+# test route for query for a Star Wars character
 get '/query-star-wars-character' do
   name = "Arm"
   character = queryStarWarsForCharacters(name)
@@ -84,15 +105,15 @@ get '/query-star-wars-character' do
 end
 
 
-
+# test route for query for a Star Wars 
 get '/query-all-characters' do
   name = "Luke Skywalker"
   characters = getAllCharacters()
-  character = getCharacterName(characters, name)
+  puts characters
 end
 
 
-
+# test route for query of one specific attribute
 get '/query-for-field' do
   name = "Luke Skywalker"
   #characters = getAllCharacters()
@@ -100,13 +121,14 @@ get '/query-for-field' do
   character = getCharacterInfoField(characters, name, 'hair_color')
 end
 
-
+# test route for query of one specific character description
 get '/query-for-string' do
   name = "Luke Skywalker"
   characters = getAllCharacters()
   character = getCharacterInfoString(characters, name)
 end
 
+# test route for getting the film crawl for a character
 get '/get-films' do
   title = 'Return of the Jedi'
   films = getFilms()
@@ -114,7 +136,7 @@ get '/get-films' do
 
 end
 
-
+# test route for movies that have lower case characters in them 
 get '/get-formatted-films' do 
     filmOrCharacterTest = 'a New hope'.downcase!
     if filmOrCharacterTest == 'the force awakens' or filmOrCharacterTest == 'a new hope'
@@ -130,124 +152,35 @@ get '/get-formatted-films' do
 
 end 
 
-def queryStarWarsForCharacters(name)
-  url = 'http://swapi.co/api/people'
-  puts url 
-  data = HTTParty.get(url)['results']
-
-  pages = []
-
-  i = 1
-
-  while i < 5 do 
-
-    puts("Loop ")
-    i += 1 
-    url_page = 'http://swapi.co/api/people/?page=' + i.to_s
-    puts url_page
-    characters = HTTParty.get(url)['results']
-    #puts characters
-
-    pages += [characters]
-
-  end 
-
-  #puts pages
-
-
-  # loop over data in json array
-  data.each do |character|
-    puts character['name']
-    if name == character['name']
-      return character['name']
-    else
-      return "Sorry. I cannot find that character."
-    end 
-  end 
+get '/get-all-species' do
+  species = getSpecies()
+  getSpecie(species, 'Zabrak')
+  #puts species
 end 
 
-
-def getAllCharacters()
-  charactersList = []
-
-  i = 1
-
-  while i < 8 do 
-
-    puts("Loop ") 
-    url_page = 'http://swapi.co/api/people/?page=' + i.to_s
-    puts url_page
-    characters = HTTParty.get(url_page)['results']
-    #puts "---Characters---"
-    #puts characters
-
-    characters.each do |character|
-      #puts character['name']
-      charactersList << character
-    end 
-
-    i += 1
-
-  end 
-  #puts charactersList
-  return charactersList
+get '/isMovie' do
+  movie = isMovie("return of the jedi")
+  puts movie 
 end 
 
-
-def getCharacterName(characters, name)
-  puts name
-  characters.each do |character|
-    puts character['name']
-    if name == character['name']
-      return name
-    end 
-  end 
-  return "Sorry. I cannot find that character."
-end 
-
-def getCharacterInfoString(characters, name)
-  puts name
-  characters.each do |character|
-    puts character['name']
-    if name == character['name']
-      return "You wanted to know about " + character['name'] + ". 
-      The character is " + character['height'] + " centimeters tall and weighs " + character['mass'] + " kilograms." + " 
-      The character has " + character['hair_color'] + " hair and " + character['skin_color'] + " skin color."
-    end 
-  end 
-  return "Sorry. I cannot find that character."
-end 
-
-
-def getCharacterInfoField(characters, name, option)
-  puts name 
-  puts option
-  characters.each do |character|
-    #puts character['name']
-    if name == character['name']
-      return character[option]
-    end 
-  end 
-  return "Sorry. I cannot find that character."
-end 
-
-def getFilms()
-  url = 'http://swapi.co/api/films/'
-  puts url 
-  data = HTTParty.get(url)['results']
-  return data
-end 
-
-def getFilmCrawl(films, title)
-  puts title
-  films.each do |film|
-    #puts character['name']
-    if title == film['title']
-      return film['opening_crawl']
-    end 
-  end 
-  return "Sorry. I cannot find that film."
+get '/get-all-planets' do
+  name = 'Corellia'
+  planets = getPlanets()
+  planet = getPlanet(planets, name)
+  puts planet
 end
+
+get '/get-json' do
+  #puts returnJSON("hello world", true)
+  puts storeSessionAttribute("Luke Skywalker", "Test", true, false)
+end
+
+get '/get-home-world' do
+  characters = getAllCharacters()
+  homeWorld = getHomeWorld(characters, "Luke Skywalker")
+  puts homeWorld
+end 
+
 
 ########### Marvel API Code ############
 # Note that this version will not work for Alex #
@@ -279,3 +212,50 @@ def getDescription(name)
 
 end
 
+ 
+
+
+def returnJSON(text, option)
+    json = JSON.parse(
+    '{
+  
+    "version": "1.0",
+    "response": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "' + text + '"
+       },
+      "shouldEndSession": " ' + to_sb(option) + ' "
+      }
+    }')
+end 
+
+
+def storeSessionAttribute(input, result, newSession, endSession)
+  json = JSON.parse(
+  '{
+
+    "version": "1.0",
+    "session": {
+      "new": "' + to_sb(newSession) + '"
+    },
+    "sessionAttributes": {
+      "input": "' + input + '"
+    },
+    "response": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "' + result + '"
+       },
+      "shouldEndSession": "' + to_sb(endSession) + '"
+    }
+  }')
+end 
+
+def to_sb(option)
+  if option == true
+    return 'true'
+  else
+    return 'false'
+  end 
+end 
