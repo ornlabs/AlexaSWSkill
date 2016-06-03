@@ -103,20 +103,54 @@ def getCharacterHairColor(characters, name)
   return "Sorry. I cannot find that character's height."
 end
 
-def getHomeWorld(characters, name)
+def getCharacterHomeWorld(characters, name)
 
   characters.each do |character|
     #puts character['name']
     if name == character['name']
       url_page = character['homeworld']
-      puts url_page
-      homeWorld = HTTParty.get(url)['name']
-      puts homeWorld
-      return homeWorld
+      #puts url_page
+      homeWorld = HTTParty.get(url_page)['name']
+      #puts homeWorld
+      return "The home world of " + name + " is " + character['homeworld'] + '. Anything else?'
     end 
   end 
 
   return "Sorry. I cannot find the character's home world."
+end
+
+def getCharacterFilms(characters, name)
+
+  characters.each do |character|
+    #puts character['name']
+    if name == character['name']
+      films = character['films']
+      puts films
+
+      result = name + " has appeared in "
+
+      count = films.length
+      i = 0
+
+      films.each do |film|
+        if i == count - 1 and count > 1
+          puts result 
+          result += " and " + HTTParty.get(film)['title']
+        else
+          puts "---Film---"
+          puts film
+          title = HTTParty.get(film)['title'] 
+          puts title
+          result += title + ", "
+        end 
+        i += 1
+      end 
+      
+      return result + '. Anything else?'
+    end 
+  end 
+
+  return "Sorry. I cannot find the films the character has been in."
 end
 
 

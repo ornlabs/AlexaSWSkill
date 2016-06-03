@@ -49,6 +49,12 @@ post '/' do
     elsif @intent == "hair_color"
       characters = getAllCharacters()
       result = getCharacterHairColor(characters, @name)
+    elsif @intent == "home_world"
+      characters = getAllCharacters()
+      result = getCharacterHomeWorld(characters, @name)
+    elsif @intent == "character_films"
+      characters = getAllCharacters()
+      result = getCharacterFilms(characters, name)
     end
     
     response = storeSessionAttribute(@name, result, false, false)
@@ -177,8 +183,13 @@ end
 
 get '/get-home-world' do
   characters = getAllCharacters()
-  homeWorld = getHomeWorld(characters, "Luke Skywalker")
-  puts homeWorld
+  homeWorld = getCharacterHomeWorld(characters, "Luke Skywalker")
+  #puts characters
+end 
+
+get '/get-character-films' do
+  characters = getAllCharacters()
+  films = getCharacterFilms(characters, "Luke Skywalker")
 end 
 
 
@@ -198,6 +209,7 @@ get '/query-api' do
   name = 'thor'
   getDescription(name)
 end
+
 
 def getDescription(name)
   response = queryAPI(name)
