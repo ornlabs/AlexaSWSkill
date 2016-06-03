@@ -58,7 +58,7 @@ def storeSessionAttributeForMovie(input, result, newSession, endSession)
     "response": {
       "outputSpeech": {
         "type": "PlainText",
-        "text": "' + result + '"
+        "text": " result "
        },
       "shouldEndSession": "' + to_sb(endSession) + '"
     }
