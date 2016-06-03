@@ -72,20 +72,11 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['person']['value']
     puts @input
 
-      #species = getSpecies()
-      #specie = getSpecie(species, @input)
+    films = getFilms()
+    film = isMovie(@input)
+    formattedFilm = getFilmCrawl(films, film)
 
-
-      films = getFilms()
-      film = isMovie(@input)
-      formattedFilm = getFilmCrawl(films, film)
-
-      #planets = getPlanets()
-      #planet = getPlanet(planets, @input)
-
-      characters = getAllCharacters()
-      #character = getCharacterInfoString(characters, @input)
-      character = getCharacterName(characters, @input)
+    character = getCharacterName(@input)
 
 
       #if specie != "Sorry. I cannot find that species."
