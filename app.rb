@@ -88,19 +88,19 @@ post '/' do
     puts "---SESSION ATTRIBUTE---"
     puts "You have a planet"
     # get name of character
-    #planet = @request_payload['session']['attributes']['planet']
-    #puts planet
+    planet = @request_payload['session']['attributes']['planet']
+    puts planet
 
     # get the intent 
-    #intent = @request_payload['request']['intent']['name']
-    #puts intent
+    intent = @request_payload['request']['intent']['name']
+    puts intent
 
-    #result = getPlanetInformation(intent, name)
+    result = getPlanetInformation(intent, name)
     result = "Fetching planet info...."
     puts "---RESULT---"
     puts result
   
-    response = storeSessionAttributeForPlanet(name, result, false, false)
+    response = storeSessionAttributeForPlanet(planet, result, false, false)
     JSON.generate(response)
   elsif defined?(@request_payload['request']['intent']['name'] == 'height' or
     @request_payload['request']['intent']['name'] == 'hair_color' or  
