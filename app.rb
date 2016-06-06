@@ -84,7 +84,7 @@ post '/' do
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
-  elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period')
+  elsif defined?(@request_payload['session']['attributes']['planet'])
     puts "---SESSION ATTRIBUTE---"
     puts "You have a planet"
     # get name of character
@@ -298,6 +298,8 @@ end
 def getPlanetInformation(intent, name)
   if intent == "orbital_period"
     return getPlanetOrbitalPeriod(name)
+  elsif intent == "climate"
+    return getPlanetClimate(name)
   else
     return "I didn't catch that. Please try again. What do you want to know?"
   end

@@ -52,3 +52,13 @@ def getPlanetOrbitalPeriod(name)
   end 
   return "Sorry. I cannot find that planet's orbital period."
 end 
+
+def getPlanetClimate(name)
+  planets = getPlanets()
+  planets.each do |planet|
+    if name == planet['name']
+      return "The climate of " + name + " is " + planet['climate'] + '. Anything else?'
+    end  
+  end 
+  return "Sorry. I cannot find that planet's climate."
+end 
