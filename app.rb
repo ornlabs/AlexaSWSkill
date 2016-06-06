@@ -117,16 +117,6 @@ post '/' do
       response = storeSessionAttributeForPlanet(planet, result, false, false)
       JSON.generate(response)
     end 
-  
-  # check that the intent is for character
-  elsif defined?(@request_payload['session']['attributes']['planet']) 
-
-    planet = @request_payload['session']['attributes']['planet']
-    puts planet
-
-
-    
-
   end
 end 
 
