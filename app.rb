@@ -92,6 +92,7 @@ post '/' do
 
     if defined?(@request_payload['session']['attributes']['input']) 
       puts "You have a character"
+      name = @request_payload['session']['attributes']['input']
       intent = @request_payload['request']['intent']['name']
       puts intent
       result = getCharacterInformation(intent, name)
@@ -104,6 +105,8 @@ post '/' do
     else 
       puts "You have a planet"
       # get the intent 
+      planet = @request_payload['session']['attributes']['planet']
+      puts planet
       intent = @request_payload['request']['intent']['planet']
       puts intent
       result = getPlanetInformation(intent, planet)
