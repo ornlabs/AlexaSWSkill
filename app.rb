@@ -84,8 +84,16 @@ post '/' do
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
-  elsif defined?(@request_payload['session']['attributes']['input']) and 
-    !defined?(@request_payload['request']['intent']['slots']['person']['value'])
+  elsif defined?(@request_payload['request']['intent']['name'] == 'height' or
+    @request_payload['request']['intent']['name'] == 'hair_color' or  
+    @request_payload['request']['intent']['name'] == 'home_world' or
+    @request_payload['request']['intent']['name'] == 'character_films' or
+    @request_payload['request']['intent']['name'] == 'skin_color' or
+    @request_payload['request']['intent']['name'] == 'birth_year' or
+    @request_payload['request']['intent']['name'] == 'eye_color' or
+    @request_payload['request']['intent']['name'] == 'species')
+
+
 
     puts "---SESSION ATTRIBUTE---"
 
@@ -98,11 +106,7 @@ post '/' do
     intent = @request_payload['request']['intent']['name']
     puts intent
 
-    if (intent == "orbital_period")
-      result = "You asked for the orbital period."
-    else
-      result = getCharacterInformation(intent, name)
-    end 
+    result = getCharacterInformation(intent, name)
     puts "---RESULT---"
     puts result
   
