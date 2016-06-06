@@ -96,7 +96,6 @@ post '/' do
     puts intent
 
     result = getPlanetInformation(intent, planet)
-    result = "Fetching planet info...."
     puts "---RESULT---"
     puts result
   
