@@ -97,8 +97,12 @@ post '/' do
     # get the intent 
     intent = @request_payload['request']['intent']['name']
     puts intent
-    result = getCharacterInformation(intent, name)
 
+    if (intent == orbital_period)
+      result = "You asked for the orbital period."
+    else
+      result = getCharacterInformation(intent, name)
+    end 
     puts "---RESULT---"
     puts result
   
