@@ -95,7 +95,7 @@ post '/' do
     intent = @request_payload['request']['intent']['name']
     puts intent
 
-    result = getPlanetInformation(intent, name)
+    result = getPlanetInformation(intent, planet)
     result = "Fetching planet info...."
     puts "---RESULT---"
     puts result
