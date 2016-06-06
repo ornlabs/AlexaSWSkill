@@ -112,6 +112,23 @@ post '/' do
   
     response = storeSessionAttribute(name, result, false, false)
     JSON.generate(response)
+  elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period')
+    puts "---SESSION ATTRIBUTE---"
+    puts "You have a planet"
+    # get name of character
+    planet = @request_payload['session']['attributes']['planet']
+    puts planet
+
+    # get the intent 
+    intent = @request_payload['request']['intent']['name']
+    puts intent
+
+    result = getPlanetInformation(intent, name)
+    puts "---RESULT---"
+    puts result
+  
+    response = storeSessionAttribute(name, result, false, false)
+    JSON.generate(response)
   else
     response = storeSessionAttribute("Not Found", "Sorry, I cannot find anything. Try again.", false, false)
     JSON.generate(response)
