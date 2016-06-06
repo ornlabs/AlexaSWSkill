@@ -84,12 +84,11 @@ post '/' do
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
-  elsif defined?(@request_payload['session']['attributes']['input']) and 
-    !defined?(@request_payload['request']['intent']['slots']['person']['value'])
+  elsif defined?(@request_payload['session']['attributes']['input']) 
 
     name = @request_payload['session']['attributes']['input']
     puts name
-    puts "You saved an attribute"
+    puts "You have a character"
 
     # get the intent 
     intent = @request_payload['request']['intent']['name']
@@ -102,8 +101,7 @@ post '/' do
     response = storeSessionAttribute(name, result, false, false)
     JSON.generate(response)
   # check that the intent is for character
-  elsif defined?(@request_payload['session']['attributes']['planet']) and 
-    !defined?(@request_payload['request']['intent']['slots']['planet']['value'])
+  elsif defined?(@request_payload['session']['attributes']['planet']) 
 
     planet = @request_payload['session']['attributes']['planet']
     puts planet
