@@ -116,14 +116,15 @@ post '/' do
     puts "---SESSION ATTRIBUTE---"
     puts "You have a planet"
     # get name of character
-    planet = @request_payload['session']['attributes']['planet']
-    puts planet
+    #planet = @request_payload['session']['attributes']['planet']
+    #puts planet
 
     # get the intent 
-    intent = @request_payload['request']['intent']['name']
-    puts intent
+    #intent = @request_payload['request']['intent']['name']
+    #puts intent
 
-    result = getPlanetInformation(intent, name)
+    #result = getPlanetInformation(intent, name)
+    result = "Fetching planet info...."
     puts "---RESULT---"
     puts result
   
