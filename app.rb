@@ -40,16 +40,15 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['film']['value']
     puts @input
 
-    films = getFilms()
     film = isMovie(@input)
-
-    puts "---Film---"
-    puts film
-    filmCrawl = getOpeningCrawl(film)
-
+    if film != "Sorry. I cannot find that film."
+      result = getOpeningCrawl(film)
+    else
+      result = "I don't know what you are talking about. Try again."
+      
     puts "---Film Crawl---"
-    puts filmCrawl
-    response = storeSessionAttributeForMovie(@input, filmCrawl, true, false)
+    puts result
+    response = storeSessionAttributeForMovie(@input, result, true, false)
 
     puts response
     JSON.generate(response)
@@ -58,10 +57,6 @@ post '/' do
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['person']['value']
     puts @input
-
-    #films = getFilms()
-    #film = isMovie(@input)
-    #formattedFilm = getFilmCrawl(films, film)
 
     character = getCharacterName(@input)     
     if character != "Sorry. I cannot find that character."
@@ -72,7 +67,7 @@ post '/' do
 
     response = storeSessionAttribute(@input, result, true, false)
     JSON.generate(response)
-  # check that the session attribute is there and that the intent is defined
+  # check that the session attribute is there and that slots does not exist
   elsif defined?(@request_payload['session']['attributes']['input']) and 
     !defined?(@request_payload['request']['intent']['slots']['person']['value'])
 
