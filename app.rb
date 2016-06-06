@@ -45,7 +45,7 @@ post '/' do
       result = getOpeningCrawl(film)
     else
       result = "I don't know what you are talking about. Try again."
-      
+    end 
     puts "---Film Crawl---"
     puts result
     response = storeSessionAttributeForMovie(@input, result, true, false)
