@@ -74,7 +74,13 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['planet']['value']
     puts @input
 
-    response = storeSessionAttribute(@input, "You wanted to know about a planet.", true, false)
+    planet = getPlanet(name)
+    if planet != "Sorry. I cannot find that planet."
+      result = character
+    else
+      result = "I don't know what you are talking about. Try again."
+    end 
+    response = storeSessionAttributeForPlanet(@input, planet, true, false)
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   elsif defined?(@request_payload['session']['attributes']['input']) and 
