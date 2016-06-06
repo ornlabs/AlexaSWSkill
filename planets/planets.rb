@@ -21,7 +21,7 @@ def getPlanets()
     #puts characters
 
     planets.each do |planet|
-      puts planet
+      puts planet['name']
       planetsList << planet
     end 
 
@@ -32,11 +32,12 @@ def getPlanets()
   return planetsList
 end
 
-def getPlanet(planets, name)
+def getPlanet(name)
+  planets = getPlanets()
   planets.each do |planet|
     puts planet['name']
     if name == planet['name']
-      return "You want to know about " + planet['name'] + "." 
+      return "What do you want to know about " + planet['name'] + "?" 
     end 
   end 
   return "Sorry. I cannot find that planet."

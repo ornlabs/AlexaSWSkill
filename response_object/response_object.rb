@@ -62,7 +62,25 @@ def storeSessionAttributeForMovie(input, result, newSession, endSession)
       "shouldEndSession": "false"
     }
   }')
-end  
+end
+
+def storeSessionAttributeForPlanet(input, result, newSession, endSession)
+   json = JSON.parse(
+  '{
+
+    "version": "1.0",
+    "sessionAttributes": {
+      "planet": "' + input + '"
+    },
+    "response": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "' + result + '"
+       },
+      "shouldEndSession": "false"
+    }
+  }')
+end    
 
 def to_sb(option)
   if option == true

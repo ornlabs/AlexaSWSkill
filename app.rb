@@ -5,9 +5,10 @@ require 'httparty'
 require 'digest/md5'
 require 'rack/env'
 #require './marvel/marvel'
-require  './character/character'
-require  './films/films'
-require  './response_object/response_object'
+require './character/character'
+require './films/films'
+require './response_object/response_object'
+require './planets/planets'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
@@ -66,6 +67,14 @@ post '/' do
     end 
 
     response = storeSessionAttribute(@input, result, true, false)
+    JSON.generate(response)
+  elsif @request_payload['request']['intent']['name'] == 'planets'
+
+    puts "---NEW SESSION---"
+    @input = @request_payload['request']['intent']['slots']['planet']['value']
+    puts @input
+
+    response = storeSessionAttribute(@input, "You wanted to know about a planet.", true, false)
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   elsif defined?(@request_payload['session']['attributes']['input']) and 
@@ -161,10 +170,12 @@ get '/isMovie' do
 end 
 
 get '/get-all-planets' do
-  name = 'Corellia'
+  #name = 'Corellia'
+  #planets = getPlanets()
+  #planet = getPlanet(planets, name)
+  #puts planet
   planets = getPlanets()
-  planet = getPlanet(planets, name)
-  puts planet
+  puts planets
 end
 
 get '/get-json-for-crawler' do
