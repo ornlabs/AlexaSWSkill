@@ -87,39 +87,42 @@ post '/' do
   elsif defined?(@request_payload['session']['attributes']) 
 
     puts "---SESSION ATTRIBUTE---"
-    puts @request_payload['session']['attributes']
-    name = @request_payload['session']['attributes']['input']
-    puts name
-    puts "You have a character"
+    #puts @request_payload['session']['attributes']
+    #name = @request_payload['session']['attributes']['input']
 
-    # get the intent 
-    intent = @request_payload['request']['intent']['name']
-    puts intent
-    result = getCharacterInformation(intent, name)
+    if defined?(@request_payload['session']['attributes']['input']) 
+      puts "You have a character"
+      intent = @request_payload['request']['intent']['name']
+      puts intent
+      result = getCharacterInformation(intent, name)
 
-    puts "---RESULT---"
-    puts result
+      puts "---RESULT---"
+      puts result
     
-    response = storeSessionAttribute(name, result, false, false)
-    JSON.generate(response)
+      response = storeSessionAttribute(name, result, false, false)
+      JSON.generate(response)
+    else 
+      puts "You have a planet"
+      # get the intent 
+      intent = @request_payload['request']['intent']['planet']
+      puts intent
+      result = getPlanetInformation(intent, planet)
+
+      planetuts "---RESULT---"
+      puts result
+    
+      response = storeSessionAttributeForPlanet(planet, result, false, false)
+      JSON.generate(response)
+    end 
+  
   # check that the intent is for character
   elsif defined?(@request_payload['session']['attributes']['planet']) 
 
     planet = @request_payload['session']['attributes']['planet']
     puts planet
-    puts "You have a planet"
 
-    # get the intent 
-    intent = @request_payload['request']['intent']['name']
-    puts intent
-    result = getPlanetInformation(intent, planet)
 
-    puts "---RESULT---"
-    puts result
     
-    response = storeSessionAttributeForPlanet(planet, result, false, false)
-    JSON.generate(response)
-  #check that the intent is for character
 
   end
 end 
