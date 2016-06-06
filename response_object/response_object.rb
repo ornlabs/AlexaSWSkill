@@ -23,6 +23,8 @@ end
 
 
 def storeSessionAttribute(input, result, newSession, endSession)
+  puts "---RESULT---"
+  puts result
   json = JSON.parse(
   '{
 
