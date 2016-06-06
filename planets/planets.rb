@@ -37,7 +37,7 @@ def getPlanet(name)
   planets.each do |planet|
     puts planet['name']
     if name == planet['name']
-      return "What do you want to know about " + planet['name'] + "?" 
+      return "You want to know about " + planet['name'] + "?" 
     end 
   end 
   return "Sorry. I cannot find that planet."
