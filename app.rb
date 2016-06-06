@@ -74,7 +74,7 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['planet']['value']
     puts @input
 
-    planet = getPlanet(name)
+    planet = getPlanet(@input)
     if planet != "Sorry. I cannot find that planet."
       result = character
     else
