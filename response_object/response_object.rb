@@ -64,13 +64,13 @@ def storeSessionAttributeForMovie(input, result, newSession, endSession)
   }')
 end
 
-def storeSessionAttributeForPlanet(input, result, newSession, endSession)
+def storeSessionAttributeForPlanet(planet, result, newSession, endSession)
    json = JSON.parse(
   '{
 
     "version": "1.0",
     "sessionAttributes": {
-      "planet": "' + input + '"
+      "planet": "' + planet + '"
     },
     "response": {
       "outputSpeech": {
