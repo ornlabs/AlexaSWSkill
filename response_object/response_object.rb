@@ -52,7 +52,7 @@ def storeSessionAttributeForMovie(input, result, newSession, endSession)
 
     "version": "1.0",
     "sessionAttributes": {
-      "input": "' + input + '"
+      "film": "' + input + '"
     },
     "response": {
       "outputSpeech": {
