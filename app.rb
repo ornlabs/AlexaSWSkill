@@ -117,7 +117,7 @@ post '/' do
     puts "---RESULT---"
     puts result
     
-    response = storeSessionAttribute(planet, result, false, false)
+    response = storeSessionAttributeForPlanet(planet, result, false, false)
     JSON.generate(response)
   #check that the intent is for character
 
@@ -259,6 +259,10 @@ get '/query-api' do
   getDescription(name)
 end
 
+get '/get-planet-info' do
+  orbitalPeriod = getPlanetOrbitalPeriod("Tatooine")
+  puts orbitalPeriod
+end 
 
 def getDescription(name)
   response = queryAPI(name)
