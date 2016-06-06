@@ -107,7 +107,7 @@ post '/' do
       # get the intent 
       planet = @request_payload['session']['attributes']['planet']
       puts planet
-      intent = @request_payload['request']['intent']['planet']
+      intent = @request_payload['request']['intent']['name']
       puts intent
       result = getPlanetInformation(intent, planet)
 
