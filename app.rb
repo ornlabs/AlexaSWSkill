@@ -83,6 +83,7 @@ post '/' do
     response = storeSessionAttributeForPlanet(@input, planet, true, false)
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
+  # this allows users to switch and ask for a different character
   elsif defined?(@request_payload['session']['attributes']['input']) and 
     !defined?(@request_payload['request']['intent']['slots']['person']['value'])
 
@@ -101,7 +102,24 @@ post '/' do
     response = storeSessionAttribute(name, result, false, false)
     JSON.generate(response)
   # check that the intent is for character
-  
+  elsif defined?(@request_payload['session']['attributes']['planet']) and 
+    !defined?(@request_payload['request']['intent']['slots']['planet']['value'])
+
+    planet = @request_payload['session']['attributes']['planet']
+    puts planet
+    puts "You have a planet"
+
+    # get the intent 
+    intent = @request_payload['request']['intent']['name']
+    puts intent
+    result = getPlanetInformation(intent, planet)
+
+    puts "---RESULT---"
+    puts result
+    
+    response = storeSessionAttribute(planet, result, false, false)
+    JSON.generate(response)
+  #check that the intent is for character
 
   end
 end 
@@ -276,6 +294,12 @@ def getCharacterInformation(intent, name)
   else
     return "I didn't catch that. Please try again. What do you want to know?"
   end
-  
+end 
 
+def getPlanetInformation(intent, name)
+  if intent == "orbital_period"
+    return getPlanetOrbitalPeriod(name)
+  else
+    return "I didn't catch that. Please try again. What do you want to know?"
+  end
 end 
