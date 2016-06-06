@@ -84,39 +84,27 @@ post '/' do
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
-  elsif defined?(@request_payload['session']['attributes']) 
+  elsif defined?(@request_payload['session']['attributes']['input']) and 
+    !defined?(@request_payload['request']['intent']['slots']['person']['value'])
 
     puts "---SESSION ATTRIBUTE---"
-    #puts @request_payload['session']['attributes']
-    #name = @request_payload['session']['attributes']['input']
 
-    if defined?(@request_payload['session']['attributes']['input']) 
-      puts "You have a character"
-      name = @request_payload['session']['attributes']['input']
-      intent = @request_payload['request']['intent']['name']
-      puts intent
-      result = getCharacterInformation(intent, name)
+    puts "You have a character"
+    # get name of character
+    name = @request_payload['session']['attributes']['input']
+    puts name
 
-      puts "---RESULT---"
-      puts result
-    
-      response = storeSessionAttribute(name, result, false, false)
-      JSON.generate(response)
-    else 
-      puts "You have a planet"
-      # get the intent 
-      planet = @request_payload['session']['attributes']['planet']
-      puts planet
-      intent = @request_payload['request']['intent']['name']
-      puts intent
-      result = getPlanetInformation(intent, planet)
+    # get the intent 
+    intent = @request_payload['request']['intent']['name']
+    puts intent
+    result = getCharacterInformation(intent, name)
 
-      planetuts "---RESULT---"
-      puts result
-    
-      response = storeSessionAttributeForPlanet(planet, result, false, false)
-      JSON.generate(response)
-    end 
+    puts "---RESULT---"
+    puts result
+  
+    response = storeSessionAttribute(name, result, false, false)
+    JSON.generate(response)
+   
   end
 end 
 
