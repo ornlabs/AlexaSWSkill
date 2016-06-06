@@ -104,8 +104,10 @@ post '/' do
   
     response = storeSessionAttribute(name, result, false, false)
     JSON.generate(response)
-   
-  end
+  else
+    response = storeSessionAttribute("Not Found", "Sorry, I cannot find anything. Try again.", false, false)
+    JSON.generate(response)
+  end 
 end 
 
 
