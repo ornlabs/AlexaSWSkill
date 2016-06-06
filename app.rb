@@ -34,24 +34,25 @@ post '/' do
     
     response = returnJSON("Goodbye. See you later...", true)
     JSON.generate(response)
-  elsif defined?(@request_payload['session']['attributes']['input']) and 
-    !defined?(@request_payload['request']['intent']['slots']['person']['value'])
 
-    name = @request_payload['session']['attributes']['input']
-    puts name
-    puts "You saved an attribute"
+  elsif @request_payload['request']['intent']['name'] == 'movie'
+    puts "---NEW SESSION---"
+    @input = @request_payload['request']['intent']['slots']['film']['value']
+    puts @input
 
-    # get the intent 
-    intent = @request_payload['request']['intent']['name']
-    puts intent
-    result = getCharacterInformation(intent, name)
+    films = getFilms()
+    film = isMovie(@input)
 
-    puts "---RESULT---"
-    puts result
-    
-    response = storeSessionAttribute(name, result, false, false)
+    puts "---Film---"
+    puts film
+    filmCrawl = getOpeningCrawl(film)
+
+    puts "---Film Crawl---"
+    puts filmCrawl
+    response = storeSessionAttributeForMovie(@input, filmCrawl, true, false)
+
+    puts response
     JSON.generate(response)
-  # check that the intent is for character
   elsif @request_payload['request']['intent']['name'] == 'character'
 
     puts "---NEW SESSION---"
@@ -71,24 +72,27 @@ post '/' do
 
     response = storeSessionAttribute(@input, result, true, false)
     JSON.generate(response)
-  elsif @request_payload['request']['intent']['name'] == 'movie'
-    puts "---NEW SESSION---"
-    @input = @request_payload['request']['intent']['slots']['film']['value']
-    puts @input
+  # check that the session attribute is there and that the intent is defined
+  elsif defined?(@request_payload['session']['attributes']['input']) and 
+    !defined?(@request_payload['request']['intent']['slots']['person']['value'])
 
-    films = getFilms()
-    film = isMovie(@input)
+    name = @request_payload['session']['attributes']['input']
+    puts name
+    puts "You saved an attribute"
 
-    puts "---Film---"
-    puts film
-    filmCrawl = getOpeningCrawl(film)
+    # get the intent 
+    intent = @request_payload['request']['intent']['name']
+    puts intent
+    result = getCharacterInformation(intent, name)
 
-    puts "---Film Crawl---"
-    puts filmCrawl
-    response = storeSessionAttributeForMovie(@input, filmCrawl, true, false)
-
-    puts response
+    puts "---RESULT---"
+    puts result
+    
+    response = storeSessionAttribute(name, result, false, false)
     JSON.generate(response)
+  # check that the intent is for character
+  
+
   end
 end 
 
