@@ -259,6 +259,11 @@ get '/get-planet-info' do
   puts orbitalPeriod
 end 
 
+get '/get-planet-residents' do
+  residents = getPlanetResidents("Tatooine")
+  puts residents
+end 
+
 def getDescription(name)
   response = queryAPI(name)
   #puts response
@@ -300,6 +305,12 @@ def getPlanetInformation(intent, name)
     return getPlanetOrbitalPeriod(name)
   elsif intent == "climate"
     return getPlanetClimate(name)
+  elsif intent == "terrain"
+    return getPlanetTerrain(name)
+  elsif intent == "population"
+    return getPlanetTerrain(name)
+  elsif intent == "residents"
+    return getPlanetResidents(name)
   else
     return "I didn't catch that. Please try again. What do you want to know?"
   end

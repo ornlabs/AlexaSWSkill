@@ -37,7 +37,7 @@ def getPlanet(name)
   planets.each do |planet|
     puts planet['name']
     if name == planet['name']
-      return "You want to know about " + planet['name'] + "?" 
+      return "What do you want to know about " + planet['name'] + "?" 
     end 
   end 
   return "Sorry. I cannot find that planet."
@@ -62,3 +62,57 @@ def getPlanetClimate(name)
   end 
   return "Sorry. I cannot find that planet's climate."
 end 
+
+def getPlanetTerrain(name)
+  planets = getPlanets()
+  planets.each do |planet|
+    if name == planet['name']
+      return "The terrain of " + name + " is " + planet['terrain'] + '. Anything else?'
+    end  
+  end 
+  return "Sorry. I cannot find that planet's terrain."
+end 
+
+def getPlanetPopulation(name)
+  planets = getPlanets()
+  planets.each do |planet|
+    if name == planet['name']
+      return "The population of " + name + " is " + planet['population'] + '. Anything else?'
+    end  
+  end 
+  return "Sorry. I cannot find that planet's population."
+end 
+
+def getPlanetResidents(name)
+  planets = getPlanets()
+  planets.each do |planet|
+    #puts character['name']
+    if name == planet['name']
+      residents = planet['residents']
+      puts residents
+
+      result = name + " has the following residents: "
+
+      count = residents.length
+      i = 0
+
+      residents.each do |resident|
+        if i == count - 1 and count > 1
+          puts result 
+          result += " and " + HTTParty.get(resident)['name']
+        else
+          puts "---Resident---"
+          puts resident
+          person = HTTParty.get(resident)['name'] 
+          puts person
+          result += person + ", "
+        end 
+        i += 1
+      end 
+      
+      return result + '. Anything else?'
+    end 
+  end 
+
+  return "Sorry. I cannot find the residents of this planet."
+end
