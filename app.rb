@@ -119,7 +119,7 @@ elsif defined?(@request_payload['request']['intent']['name'] == 'manufacturer' o
     puts "---RESULT---"
     puts result
   
-    response = storeSessionAttributeForStarship(planet, result, false, false)
+    response = storeSessionAttributeForStarship(starship, result, false, false)
     JSON.generate(response)
   elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period' or
     @request_payload['request']['intent']['name'] == 'climate' or  
