@@ -23,10 +23,10 @@ post '/' do
   intent = @request_payload['request']['intent']['name'] 
   puts intent
 
-  sessionAttribute = nil
+  #sessionAttribute = nil
 
   puts "---SESSION---"
-  puts sessionAttribute
+  #puts sessionAttribute
 
   # type == LaunchRequest
   if @request_payload['request']['type'] == 'LaunchRequest'
