@@ -19,6 +19,10 @@ post '/' do
   puts "---REQUEST PAYLOAD---"
   puts @request_payload
 
+  puts "---INTENT---"
+  intent = @request_payload['request']['intent']['name'] 
+  puts intent
+
   # type == LaunchRequest
   if @request_payload['request']['type'] == 'LaunchRequest'
     '{
