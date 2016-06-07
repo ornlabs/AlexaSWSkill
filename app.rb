@@ -25,14 +25,6 @@ post '/' do
 
   sessionAttribute = nil
 
-  if defined?(@request_payload['session']['attributes']['planet'])
-    sessionAttribute = "planet"
-  elsif defined?(@request_payload['session']['attributes']['starship'])
-    sessionAtrribute = "starship"
-  elsif defined?(@request_payload['session']['attributes']['input'])
-    sessionAttribute = "character"
-  end
-
   puts "---SESSION---"
   puts sessionAttribute
 
@@ -119,7 +111,11 @@ elsif intent == 'starships'
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-elsif sessionAttribute == "starship"
+elsif (intent == "manufacturer" or 
+      intent == "length" or 
+      intent == "class" or 
+      intent == "cost" or 
+      intent == "speed")
   
     puts "---SESSION ATTRIBUTE---"
     puts "You have a starship"
@@ -137,7 +133,11 @@ elsif sessionAttribute == "starship"
   
     response = storeSessionAttributeForStarship(starship, result, false, false)
     JSON.generate(response)
-  elsif sessionAttribute == "planet"
+  elsif (intent == "orbital_period" or 
+        intent == "climate" or 
+        intent == "terrain" or 
+        intent == "population" or 
+        intent == "residents")
 
     puts "---SESSION ATTRIBUTE---"
     puts "You have a planet"
@@ -156,7 +156,14 @@ elsif sessionAttribute == "starship"
     response = storeSessionAttributeForPlanet(planet, result, false, false)
     JSON.generate(response)
 
-  elsif sessionAttribute == "character"
+  elsif (intent == "height" or 
+        intent == "hair_color" or 
+        intent == "home_world" or 
+        intent == "character_films" or
+        intent == "skin_color" or 
+        intent == "birth_year" or 
+        intent == "species" or 
+        intent == "eye_color")
     puts "---SESSION ATTRIBUTE---"
 
     puts "You have a character"
