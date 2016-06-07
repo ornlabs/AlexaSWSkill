@@ -97,7 +97,7 @@ def getStarshipSpeed(name)
     puts starship['name']
     if name.downcase == starship['name'].downcase
     	if starship['max_atmosphering_speed'] == "n/a"
-    		return "This star ship hasn no max atmosphering speed."
+    		return "This star ship has no max atmosphering speed."
     	else
     		return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + " km/s." 
     	end 

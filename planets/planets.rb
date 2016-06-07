@@ -1,4 +1,3 @@
-
 class Planets
   def initialize()
   end
@@ -36,7 +35,7 @@ def getPlanet(name)
   planets = getPlanets()
   planets.each do |planet|
     puts planet['name']
-    if name == planet['name']
+    if name.downcase == planet['name'].downcase
       return "What do you want to know about " + planet['name'] + "?" 
     end 
   end 
@@ -46,7 +45,7 @@ end
 def getPlanetOrbitalPeriod(name)
   planets = getPlanets()
   planets.each do |planet|
-    if name == planet['name']
+    if name.downcase == planet['name'].downcase
       return "The orbital period of " + name + " is " + planet['orbital_period'] + ' days. Anything else?'
     end  
   end 
@@ -56,7 +55,7 @@ end
 def getPlanetClimate(name)
   planets = getPlanets()
   planets.each do |planet|
-    if name == planet['name']
+    if name.downcase == planet['name'].downcase
       return "The climate of " + name + " is " + planet['climate'] + '. Anything else?'
     end  
   end 
@@ -66,7 +65,7 @@ end
 def getPlanetTerrain(name)
   planets = getPlanets()
   planets.each do |planet|
-    if name == planet['name']
+    if name.downcase == planet['name'].downcase
       return "The terrain of " + name + " is " + planet['terrain'] + '. Anything else?'
     end  
   end 
@@ -76,7 +75,7 @@ end
 def getPlanetPopulation(name)
   planets = getPlanets()
   planets.each do |planet|
-    if name == planet['name']
+    if name.downcase == planet['name'].downcase
       return "The population of " + name + " is " + planet['population'] + '. Anything else?'
     end  
   end 
@@ -87,7 +86,7 @@ def getPlanetResidents(name)
   planets = getPlanets()
   planets.each do |planet|
     #puts character['name']
-    if name == planet['name']
+    if name.downcase == planet['name'].downcase
       residents = planet['residents']
       puts residents
 
