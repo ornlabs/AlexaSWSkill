@@ -81,7 +81,7 @@ def getStarshipCost(name)
     puts starship['name']
     if name.downcase == starship['name'].downcase
     	if starship['cost_in_credits'] == "unknown"
-    		return "The cost of the ship is unknown."
+    		return "The cost of the star ship is unknown."
     	else
 			return name + " costs " + starship['cost_in_credits'] + " credits."
 		end 
@@ -96,7 +96,10 @@ def getStarshipSpeed(name)
   	starships.each do |starship|
     puts starship['name']
     if name.downcase == starship['name'].downcase
-      return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + " km/s." 
+    	if starship['max_atmosphering_speed'] == "n/a"
+    		return "This star ship hasn no max atmosphering speed."
+    	else
+    		return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + " km/s." 
     end 
   end 
   return "Sorry. I cannot find the class of that starship."
