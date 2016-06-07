@@ -102,7 +102,11 @@ elsif @request_payload['request']['intent']['name'] == 'starships'
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-elsif defined?(@request_payload['session']['attributes']['starship'])
+elsif defined?(@request_payload['request']['intent']['name'] == 'manufacturer' or
+    @equest_payload['request']['intent']['name'] == 'length' or
+    @request_payload['request']['intent']['name'] == 'class' or
+    @request_payload['request']['intent']['name'] == 'cost' or
+    @request_payload['request']['intent']['name'] == 'speed')
   
     puts "---SESSION ATTRIBUTE---"
     puts "You have a starship"
@@ -120,7 +124,11 @@ elsif defined?(@request_payload['session']['attributes']['starship'])
   
     response = storeSessionAttributeForStarship(starship, result, false, false)
     JSON.generate(response)
-  elsif defined?(@request_payload['session']['attributes']['planet'])
+  elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period' or
+    @equest_payload['request']['intent']['name'] == 'climate' or
+    @request_payload['request']['intent']['name'] == 'terrain' or
+    @request_payload['request']['intent']['name'] == 'population' or
+    @request_payload['request']['intent']['name'] == 'residents')
 
     puts "---SESSION ATTRIBUTE---"
     puts "You have a planet"
