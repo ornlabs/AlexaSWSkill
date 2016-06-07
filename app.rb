@@ -308,7 +308,7 @@ def getPlanetInformation(intent, name)
   elsif intent == "terrain"
     return getPlanetTerrain(name)
   elsif intent == "population"
-    return getPlanetTerrain(name)
+    return getPlanetPopulation(name)
   elsif intent == "residents"
     return getPlanetResidents(name)
   else
