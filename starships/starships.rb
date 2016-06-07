@@ -96,7 +96,7 @@ def getStarshipSpeed(name)
   	starships.each do |starship|
     puts starship['name']
     if name == starship['name']
-      return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + "." 
+      return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + " km/s." 
     end 
   end 
   return "Sorry. I cannot find the class of that starship."

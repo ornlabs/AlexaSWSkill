@@ -120,11 +120,7 @@ elsif defined?(@request_payload['session']['attributes']['starship'])
   
     response = storeSessionAttributeForStarship(starship, result, false, false)
     JSON.generate(response)
-  elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period' or
-    @request_payload['request']['intent']['name'] == 'climate' or  
-    @request_payload['request']['intent']['name'] == 'terrain' or
-    @request_payload['request']['intent']['name'] == 'population' or
-    @request_payload['request']['intent']['name'] == 'residents')
+  elsif defined?(@request_payload['session']['attributes']['planet'])
 
     puts "---SESSION ATTRIBUTE---"
     puts "You have a planet"
