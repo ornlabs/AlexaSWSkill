@@ -23,6 +23,14 @@ post '/' do
   intent = @request_payload['request']['intent']['name'] 
   puts intent
 
+  #sessionAttribute = nil
+
+  if defined?(@request_payload['session']['attributes'])
+    sessionAttribute = @request_payload['session']['attributes']
+  end
+
+  puts sessionAttribute
+
   # type == LaunchRequest
   if @request_payload['request']['type'] == 'LaunchRequest'
     '{
