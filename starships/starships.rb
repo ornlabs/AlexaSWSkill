@@ -47,7 +47,7 @@ def getStarshipManufacturer(name)
   	starships.each do |starship|
     puts starship['name']
     if name == starship['name']
-      return "The manufacturer of " + name + " is " + starship['manufacturer'] + "?" 
+      return "The manufacturer of " + name + " is " + starship['manufacturer'] + "." 
     end 
   end 
   return "Sorry. I cannot find the manufacturer of that starship."
@@ -62,4 +62,42 @@ def getStarshipLength(name)
     end 
   end 
   return "Sorry. I cannot find the length of that starship."
+end
+
+def getStarshipClass(name)
+	starships = getStarships()
+  	starships.each do |starship|
+    puts starship['name']
+    if name == starship['name']
+      return name + " belongs to the " + starship['starship_class'] + " class." 
+    end 
+  end 
+  return "Sorry. I cannot find the class of that starship."
+end
+
+def getStarshipCost(name)
+	starships = getStarships()
+  	starships.each do |starship|
+    puts starship['name']
+    if name == starship['name']
+    	if starship['cost_in_credits'] == "unknown"
+    		return "The cost of the ship is unknown."
+    	else
+			return name + " costs " + starship['cost_in_credits'] + " credits."
+		end 
+    end 
+  end 
+  return "Sorry. I cannot find the cost of that starship."
+end
+
+
+def getStarshipSpeed(name)
+	starships = getStarships()
+  	starships.each do |starship|
+    puts starship['name']
+    if name == starship['name']
+      return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + "." 
+    end 
+  end 
+  return "Sorry. I cannot find the class of that starship."
 end

@@ -102,8 +102,7 @@ elsif @request_payload['request']['intent']['name'] == 'starships'
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-elsif defined?(@request_payload['request']['intent']['name'] == 'manufacturer' or
-    @request_payload['request']['intent']['name'] == 'length')
+elsif defined?(@request_payload['session']['attributes']['starship'])
   
     puts "---SESSION ATTRIBUTE---"
     puts "You have a starship"
@@ -370,6 +369,12 @@ def getStarshipInformation(intent, name)
     return getStarshipManufacturer(name)
   elsif intent == "length"
     return getStarshipLength(name)
+  elsif intent == "class"
+    return getStarshipClass(name)
+  elsif intent == "cost"
+    return getStarshipCost(name)
+  elsif intent == "speed"
+    return getStarshipSpeed(name)
   else
     return "I didn't catch that. Please try again. What do you want to know?"
   end
