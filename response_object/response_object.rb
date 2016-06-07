@@ -99,7 +99,27 @@ def storeSessionAttributeForStarship(starship, result, newSession, endSession)
       "shouldEndSession": "false"
     }
   }')
-end     
+end    
+
+def startSessionAttribute(result, newSession, endSession)
+  puts "---RESULT---"
+  puts result
+  json = JSON.parse(
+  '{
+
+    "version": "1.0",
+    "session": {
+      "new": "' + to_sb(newSession) + '"
+    },
+    "response": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "' + result + '"
+       },
+      "shouldEndSession": "' + to_sb(endSession) + '"
+    }
+  }')
+end 
 
 def to_sb(option)
   if option == true
