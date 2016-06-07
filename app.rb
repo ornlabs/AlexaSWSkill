@@ -129,6 +129,9 @@ elsif (intent == "manufacturer" or
       # get name of character
       starship = @request_payload['session']['attributes']['starship']
       puts starship
+      if (!starship)
+        puts "!!!!!No starship!!!!!!!"
+      end 
 
       # get the intent 
       intent = @request_payload['request']['intent']['name']
