@@ -35,13 +35,13 @@ post '/' do
         "shouldEndSession": true
       }
     }'
-  elsif @request_payload['request']['intent']['name'] == 'AMAZON.CancelIntent'
+  elsif intent == 'AMAZON.CancelIntent'
 
     
     response = returnJSON("Goodbye. See you later...", true)
     JSON.generate(response)
 
-  elsif @request_payload['request']['intent']['name'] == 'movie'
+  elsif intent == 'movie'
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['film']['value']
     puts @input
@@ -58,7 +58,7 @@ post '/' do
 
     puts response
     JSON.generate(response)
-  elsif @request_payload['request']['intent']['name'] == 'character'
+  elsif intent == 'character'
 
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['person']['value']
@@ -73,7 +73,7 @@ post '/' do
 
     response = storeSessionAttribute(@input, result, true, false)
     JSON.generate(response)
-  elsif @request_payload['request']['intent']['name'] == 'planets'
+  elsif intent == 'planets'
 
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['planet']['value']
@@ -89,7 +89,7 @@ post '/' do
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
-elsif @request_payload['request']['intent']['name'] == 'starships'
+elsif intent == 'starships'
 
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['starship']['value']
@@ -106,11 +106,11 @@ elsif @request_payload['request']['intent']['name'] == 'starships'
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-elsif defined?(@request_payload['request']['intent']['name'] == 'manufacturer' or
-    @equest_payload['request']['intent']['name'] == 'length' or
-    @request_payload['request']['intent']['name'] == 'class' or
-    @request_payload['request']['intent']['name'] == 'cost' or
-    @request_payload['request']['intent']['name'] == 'speed')
+elsif (intent == 'manufacturer' or
+    intent == 'length' or
+    intent == 'class' or
+    intent == 'cost' or
+    intent == 'speed')
   
     puts "---SESSION ATTRIBUTE---"
     puts "You have a starship"
@@ -128,11 +128,11 @@ elsif defined?(@request_payload['request']['intent']['name'] == 'manufacturer' o
   
     response = storeSessionAttributeForStarship(starship, result, false, false)
     JSON.generate(response)
-  elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period' or
-    @equest_payload['request']['intent']['name'] == 'climate' or
-    @request_payload['request']['intent']['name'] == 'terrain' or
-    @request_payload['request']['intent']['name'] == 'population' or
-    @request_payload['request']['intent']['name'] == 'residents')
+  elsif defined?(intent == 'orbital_period' or
+    intent == 'climate' or
+    intent == 'terrain' or
+    intent == 'population' or
+    intent == 'residents')
 
     puts "---SESSION ATTRIBUTE---"
     puts "You have a planet"
@@ -151,14 +151,14 @@ elsif defined?(@request_payload['request']['intent']['name'] == 'manufacturer' o
     response = storeSessionAttributeForPlanet(planet, result, false, false)
     JSON.generate(response)
 
-  elsif defined?(@request_payload['request']['intent']['name'] == 'height' or
-    @request_payload['request']['intent']['name'] == 'hair_color' or  
-    @request_payload['request']['intent']['name'] == 'home_world' or
-    @request_payload['request']['intent']['name'] == 'character_films' or
-    @request_payload['request']['intent']['name'] == 'skin_color' or
-    @request_payload['request']['intent']['name'] == 'birth_year' or
-    @request_payload['request']['intent']['name'] == 'eye_color' or
-    @request_payload['request']['intent']['name'] == 'species')
+  elsif defined?(intent == 'height' or
+    intent == 'hair_color' or  
+    intent == 'home_world' or
+    intent == 'character_films' or
+    intent == 'skin_color' or
+    intent == 'birth_year' or
+    intent == 'eye_color' or
+    intent == 'species')
 
 
 
