@@ -124,7 +124,7 @@ elsif (intent == "manufacturer" or
       starship = @request_payload['session']['attributes']['starship']
       puts starship
       if (!starship)
-        result = "No starship! You asked for something that is not applicable to a starship."
+        result = "You asked for something that is not applicable to what you want to know."
         response = startSessionAttribute(result, true, true)
         JSON.generate(response)
       else 
@@ -150,17 +150,21 @@ elsif (intent == "manufacturer" or
     planet = @request_payload['session']['attributes']['planet']
     puts planet
 
-    # get the intent 
-    intent = @request_payload['request']['intent']['name']
-    puts intent
+    if (!planet)
+      result = "You asked for something that is not applicable to what you want to know."
+      response = startSessionAttribute(result, true, true)
+      JSON.generate(response)
+    else
+      intent = @request_payload['request']['intent']['name']
+      puts intent
 
-    result = getPlanetInformation(intent, planet)
-    puts "---RESULT---"
-    puts result
+      result = getPlanetInformation(intent, planet)
+      puts "---RESULT---"
+      puts result
   
-    response = storeSessionAttributeForPlanet(planet, result, false, false)
-    JSON.generate(response)
-
+      response = storeSessionAttributeForPlanet(planet, result, false, false)
+      JSON.generate(response)
+    end 
   elsif (intent == "height" or 
         intent == "hair_color" or 
         intent == "home_world" or 
@@ -176,17 +180,21 @@ elsif (intent == "manufacturer" or
     name = @request_payload['session']['attributes']['input']
     puts name
 
-    # get the intent 
-    intent = @request_payload['request']['intent']['name']
-    puts intent
+    if (!name)
+      result = "You asked for something that is not applicable to what you want to know."
+      response = startSessionAttribute(result, true, true)
+      JSON.generate(response)
+    else 
+      intent = @request_payload['request']['intent']['name']
+      puts intent
 
-    result = getCharacterInformation(intent, name)
-    puts "---RESULT---"
-    puts result
+      result = getCharacterInformation(intent, name)
+      puts "---RESULT---"
+      puts result
   
-    response = storeSessionAttribute(name, result, false, false)
-    JSON.generate(response)
-
+      response = storeSessionAttribute(name, result, false, false)
+      JSON.generate(response)
+    end 
   else
     response = storeSessionAttribute("Not Found", "Sorry, I cannot find anything. Try again.", false, false)
     JSON.generate(response)
