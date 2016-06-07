@@ -121,6 +121,7 @@ elsif (intent == "manufacturer" or
       result = "You asked for something that is not applicable to a starship."
     else
       puts "---SESSION ATTRIBUTE---"
+      puts @request_payload['session']['attributes']['starship']
       puts "You have a starship"
       # get name of character
       starship = @request_payload['session']['attributes']['starship']
