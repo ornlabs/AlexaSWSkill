@@ -25,8 +25,8 @@ post '/' do
 
   sessionAttribute = nil
 
-  if defined?(@request_payload['session']['attributes'])
-    sessionAttribute = @request_payload['session']['attributes']
+  if defined?(@request_payload['session']['attributes']['planet'])
+    sessionAttribute = @request_payload['session']['attributes']['planet']
   end
 
   puts "---SESSION---"
