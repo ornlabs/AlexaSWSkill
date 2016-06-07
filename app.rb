@@ -101,29 +101,10 @@ elsif @request_payload['request']['intent']['name'] == 'starships'
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
-  elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period' or
-    @request_payload['request']['intent']['name'] == 'climate' or  
-    @request_payload['request']['intent']['name'] == 'terrain' or
-    @request_payload['request']['intent']['name'] == 'population' or
-    @request_payload['request']['intent']['name'] == 'residents')
-  
-    puts "---SESSION ATTRIBUTE---"
-    puts "You have a planet"
-    # get name of character
-    planet = @request_payload['session']['attributes']['planet']
-    puts planet
 
-    # get the intent 
-    intent = @request_payload['request']['intent']['name']
-    puts intent
-
-    result = getPlanetInformation(intent, planet)
-    puts "---RESULT---"
-    puts result
+elsif defined?(@request_payload['request']['intent']['name'] == 'manufacturer' or
+    @request_payload['request']['intent']['name'] == 'length')
   
-    response = storeSessionAttributeForPlanet(planet, result, false, false)
-    JSON.generate(response)
-  elsif defined?(@request_payload['session']['attributes']['starship'])
     puts "---SESSION ATTRIBUTE---"
     puts "You have a starship"
     # get name of character
@@ -140,6 +121,29 @@ elsif @request_payload['request']['intent']['name'] == 'starships'
   
     response = storeSessionAttributeForStarship(planet, result, false, false)
     JSON.generate(response)
+  elsif defined?(@request_payload['request']['intent']['name'] == 'orbital_period' or
+    @request_payload['request']['intent']['name'] == 'climate' or  
+    @request_payload['request']['intent']['name'] == 'terrain' or
+    @request_payload['request']['intent']['name'] == 'population' or
+    @request_payload['request']['intent']['name'] == 'residents')
+
+    puts "---SESSION ATTRIBUTE---"
+    puts "You have a planet"
+    # get name of character
+    planet = @request_payload['session']['attributes']['planet']
+    puts planet
+
+    # get the intent 
+    intent = @request_payload['request']['intent']['name']
+    puts intent
+
+    result = getPlanetInformation(intent, planet)
+    puts "---RESULT---"
+    puts result
+  
+    response = storeSessionAttributeForPlanet(planet, result, false, false)
+    JSON.generate(response)
+
   elsif defined?(@request_payload['request']['intent']['name'] == 'height' or
     @request_payload['request']['intent']['name'] == 'hair_color' or  
     @request_payload['request']['intent']['name'] == 'home_world' or
