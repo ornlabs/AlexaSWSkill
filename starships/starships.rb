@@ -46,7 +46,7 @@ def getStarshipManufacturer(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name == starship['name']
+    if name.downcase == starship['name'].downcase
       return "The manufacturer of " + name + " is " + starship['manufacturer'] + "." 
     end 
   end 
@@ -57,7 +57,7 @@ def getStarshipLength(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name == starship['name']
+    if name.downcase == starship['name'].downcase
       return name + " is " + starship['length'] + " meters long." 
     end 
   end 
@@ -68,7 +68,7 @@ def getStarshipClass(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name == starship['name']
+    if name.downcase == starship['name'].downcase
       return name + " belongs to the " + starship['starship_class'] + " class." 
     end 
   end 
@@ -79,7 +79,7 @@ def getStarshipCost(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name == starship['name']
+    if name.downcase == starship['name'].downcase
     	if starship['cost_in_credits'] == "unknown"
     		return "The cost of the ship is unknown."
     	else
@@ -95,7 +95,7 @@ def getStarshipSpeed(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name == starship['name']
+    if name.downcase == starship['name'].downcase
       return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + " km/s." 
     end 
   end 
