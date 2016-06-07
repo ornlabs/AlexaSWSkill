@@ -125,7 +125,7 @@ elsif (intent == "manufacturer" or
       puts starship
       if (!starship)
         result = "No starship! You asked for something that is not applicable to a starship."
-        startSessionAttribute(result, true, true)
+        response = startSessionAttribute(result, true, true)
         JSON.generate(response)
       else 
         puts intent
@@ -325,6 +325,10 @@ get '/get-starships' do
   puts getStarships()
   #starship = getStarship("Sentinel-class landing craft")
   #puts starship
+end 
+
+get '/start-session' do 
+  puts startSessionAttribute("Test", true, true)
 end 
 
 def getDescription(name)
