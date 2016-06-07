@@ -118,6 +118,23 @@ elsif @request_payload['request']['intent']['name'] == 'starships'
   
     response = storeSessionAttributeForPlanet(planet, result, false, false)
     JSON.generate(response)
+  elsif defined?(@request_payload['session']['attributes']['starship'])
+    puts "---SESSION ATTRIBUTE---"
+    puts "You have a starship"
+    # get name of character
+    starship = @request_payload['session']['attributes']['starship']
+    puts starship
+
+    # get the intent 
+    intent = @request_payload['request']['intent']['name']
+    puts intent
+
+    result = getStarshipInformation(intent, starship)
+    puts "---RESULT---"
+    puts result
+  
+    response = storeSessionAttributeForStarship(planet, result, false, false)
+    JSON.generate(response)
   elsif defined?(@request_payload['request']['intent']['name'] == 'height' or
     @request_payload['request']['intent']['name'] == 'hair_color' or  
     @request_payload['request']['intent']['name'] == 'home_world' or
@@ -334,6 +351,16 @@ def getPlanetInformation(intent, name)
     return getPlanetPopulation(name)
   elsif intent == "residents"
     return getPlanetResidents(name)
+  else
+    return "I didn't catch that. Please try again. What do you want to know?"
+  end
+end 
+
+def getStarshipInformation(intent, name)
+  if intent == "manufacturer"
+    return getStarshipManufacturer(name)
+  elsif intent == "length"
+    return getStarshipLength(name)
   else
     return "I didn't catch that. Please try again. What do you want to know?"
   end

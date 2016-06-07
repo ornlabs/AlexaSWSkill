@@ -41,3 +41,25 @@ def getStarship(name)
   end 
   return "Sorry. I cannot find that starship."
 end
+
+def getStarshipManufacturer(name)
+	starships = getStarships()
+  	starships.each do |starship|
+    puts starship['name']
+    if name == starship['name']
+      return "The manufacturer of " + name + " is " + starship['manufacturer'] + "?" 
+    end 
+  end 
+  return "Sorry. I cannot find the manufacturer of that starship."
+end
+
+def getStarshipLength(name)
+	starships = getStarships()
+  	starships.each do |starship|
+    puts starship['name']
+    if name == starship['name']
+      return name + " is " + starship['length'] + " meters long." 
+    end 
+  end 
+  return "Sorry. I cannot find the length of that starship."
+end
