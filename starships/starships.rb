@@ -100,6 +100,7 @@ def getStarshipSpeed(name)
     		return "This star ship hasn no max atmosphering speed."
     	else
     		return name + " reaches a maximum atmosphering speed of " + starship['max_atmosphering_speed'] + " km/s." 
+    	end 
     end 
   end 
   return "Sorry. I cannot find the class of that starship."
