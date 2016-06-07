@@ -9,6 +9,7 @@ require './character/character'
 require './films/films'
 require './response_object/response_object'
 require './planets/planets'
+require './starships/starships'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
@@ -81,6 +82,22 @@ post '/' do
       result = "I don't know what you are talking about. Try again."
     end 
     response = storeSessionAttributeForPlanet(@input, planet, true, false)
+    JSON.generate(response)
+  # check that the session attribute is there and that slots does not exist
+  # this allows users to switch and ask for a different character
+elsif @request_payload['request']['intent']['name'] == 'starships'
+
+    puts "---NEW SESSION---"
+    @input = @request_payload['request']['intent']['slots']['starship']['value']
+    puts @input
+
+    starship = getStarship(@input)
+    if starship != "Sorry. I cannot find that starship."
+      result = character
+    else
+      result = "I don't know what you are talking about. Try again."
+    end 
+    response = storeSessionAttributeForStarship(@input, starship, true, false)
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
@@ -262,6 +279,12 @@ end
 get '/get-planet-residents' do
   residents = getPlanetResidents("Tatooine")
   puts residents
+end 
+
+get '/get-starships' do
+  puts getStarships()
+  #starship = getStarship("Sentinel-class landing craft")
+  #puts starship
 end 
 
 def getDescription(name)
