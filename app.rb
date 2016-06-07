@@ -117,9 +117,12 @@ elsif (intent == "manufacturer" or
       intent == "cost" or 
       intent == "speed")
 
-    if !defined?(@request_payload['session']['attributes']['starship'])
+      sessionAttribute = @request_payload['session']['attributes']['starship']
+      if !sessionAttribute
+        puts "No starship"
+      end 
       result = "You asked for something that is not applicable to a starship."
-    else
+    
       puts "---SESSION ATTRIBUTE---"
       puts @request_payload['session']['attributes']['starship']
       puts "You have a starship"
@@ -134,7 +137,7 @@ elsif (intent == "manufacturer" or
       result = getStarshipInformation(intent, starship)
       puts "---RESULT---"
       puts result
-    end 
+     
     response = storeSessionAttributeForStarship(starship, result, false, false)
     JSON.generate(response)
   elsif (intent == "orbital_period" or 
