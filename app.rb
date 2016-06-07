@@ -126,7 +126,7 @@ elsif (intent == "manufacturer" or
       if (!starship)
         result = "No starship! You asked for something that is not applicable to a starship."
       else 
-        # get the intent 
+        puts intent
         intent = @request_payload['request']['intent']['name']
         puts intent
         result = getStarshipInformation(intent, starship)
