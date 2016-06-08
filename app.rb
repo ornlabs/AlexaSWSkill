@@ -23,10 +23,13 @@ post '/' do
   intent = @request_payload['request']['intent']['name'] 
   puts intent
 
-  #sessionAttribute = nil
+  sessionAttribute = "none"
 
   puts "---SESSION---"
-  #puts sessionAttribute
+  if defined?(@request_payload['session']['attributes']['starship'])
+    sessionAttribute = "starship"
+  end 
+  puts sessionAttribute
 
   # type == LaunchRequest
   if @request_payload['request']['type'] == 'LaunchRequest'
@@ -111,7 +114,7 @@ elsif intent == 'starships'
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-elsif defined?(@request_payload['session']['attributes']['starship']) and 
+elsif (sessionAttribute == "starship") and 
       (intent == "manufacturer" or 
       intent == "length" or 
       intent == "class" or 
