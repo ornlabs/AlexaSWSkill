@@ -133,7 +133,7 @@ post '/' do
       puts starship
       if (!starship)
         result = "You asked for something that is not applicable to what you want to know."
-        response = startSessionAttribute(result, true, true)
+        response = startSessionAttribute(result, true, false)
         JSON.generate(response)
       else 
         #puts intent
@@ -160,7 +160,7 @@ post '/' do
 
     if (!planet)
       result = "You asked for something that is not applicable to what you want to know."
-      response = startSessionAttribute(result, true, true)
+      response = startSessionAttribute(result, true, false)
       JSON.generate(response)
     else
       #intent = @request_payload['request']['intent']['name']
@@ -191,7 +191,7 @@ post '/' do
 
     if (!name)
       result = "You asked for something that is not applicable to what you want to know."
-      response = startSessionAttribute(result, true, true)
+      response = startSessionAttribute(result, true, false)
       JSON.generate(response)
     else 
       #intent = @request_payload['request']['intent']['name']
