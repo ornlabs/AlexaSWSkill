@@ -22,7 +22,7 @@ How tall is he?
 
 ```
 What films has he been in?
-```leng
+```
 
 ```
 What is his home world?
