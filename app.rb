@@ -176,10 +176,14 @@ elsif (intent == "manufacturer" or
     puts "---SESSION ATTRIBUTE---"
 
     puts "You have a character"
+    name = ""
     # get name of character
-    name = @request_payload['session']['attributes']['input']
-    puts name
-
+    if !defined?(@request_payload['session']['attributes'])
+      result = "Which character do you want to know about?"
+    else
+      name = @request_payload['session']['attributes']['input']
+      puts name
+    end 
     if (!name)
       result = "You asked for something that is not applicable to what you want to know."
       response = startSessionAttribute(result, true, true)
