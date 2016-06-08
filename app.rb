@@ -26,14 +26,14 @@ post '/' do
   #sessionAttribute = "none"
 
   puts "---SESSION---"
-  if defined?(@request_payload['session']['attributes']['starship'])
-    sessionAttribute = "starship"
-  elsif defined?(@request_payload['session']['attributes']['planet'])
-    sessionAttribute = "planet"
-  elsif defined?(@request_payload['session']['attributes']['input'])
-    sessionAttribute = "character"  
-  end 
-  puts sessionAttribute
+  # if defined?(@request_payload['session']['attributes']['starship'])
+  #   sessionAttribute = "starship"
+  # elsif defined?(@request_payload['session']['attributes']['planet'])
+  #   sessionAttribute = "planet"
+  # elsif defined?(@request_payload['session']['attributes']['input'])
+  #   sessionAttribute = "character"  
+  # end 
+  # puts sessionAttribute
 
   # type == LaunchRequest
   if @request_payload['request']['type'] == 'LaunchRequest'
@@ -118,7 +118,7 @@ post '/' do
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-  elsif (sessionAttribute == "starship") and 
+  elsif defined?(@request_payload['session']['attributes']['starship']) and 
       (intent == "manufacturer" or 
       intent == "length" or 
       intent == "class" or 
