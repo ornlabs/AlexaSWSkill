@@ -165,7 +165,7 @@ elsif (intent == "manufacturer" or
       response = storeSessionAttributeForPlanet(planet, result, false, false)
       JSON.generate(response)
     end 
-  elsif defined?(@request_payload['session']['attributes']) and (intent == "height" or 
+  elsif defined?(@request_payload['session']['attributes']['input']) and (intent == "height" or 
         intent == "hair_color" or 
         intent == "home_world" or 
         intent == "character_films" or
