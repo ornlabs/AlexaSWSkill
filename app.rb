@@ -28,6 +28,10 @@ post '/' do
   puts "---SESSION---"
   if defined?(@request_payload['session']['attributes']['starship'])
     sessionAttribute = "starship"
+  elsif defined?(@request_payload['session']['attributes']['planet'])
+    sessionAttribute = "planet"
+  elsif defined?(@request_payload['session']['attributes']['input'])
+    sessionAttribute = "character"  
   end 
   puts sessionAttribute
 
@@ -142,7 +146,7 @@ elsif (sessionAttribute == "starship") and
         JSON.generate(response)
       end 
       
-  elsif defined?(@request_payload['session']['attributes']['planet']) and 
+  elsif (sessionAttribute == "planet") and 
         (intent == "orbital_period" or 
         intent == "climate" or 
         intent == "terrain" or 
@@ -170,7 +174,7 @@ elsif (sessionAttribute == "starship") and
       response = storeSessionAttributeForPlanet(planet, result, false, false)
       JSON.generate(response)
     end 
-  elsif defined?(@request_payload['session']['attributes']['input']) and 
+  elsif (sessionAttribute == "character") and 
         (intent == "height" or 
         intent == "hair_color" or 
         intent == "home_world" or 
