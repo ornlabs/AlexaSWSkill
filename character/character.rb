@@ -35,7 +35,11 @@ def getCharacterName(name)
   characters = getAllCharacters()
   characters.each do |character|
     puts character['name']
-    if name == character['name']
+    nameLower = character['name'].downcase
+    if nameLower == "obi wan kenobi"
+      nameLower == "obi-wan kenobi"
+    end
+    if name.downcase == character['name'].downcase
       return "What do you want to know about " + name + " ?"
     end 
   end 
