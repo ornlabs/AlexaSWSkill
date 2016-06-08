@@ -38,6 +38,10 @@ def getStarship(name)
     nameLower = name.downcase
     if nameLower == 'x wing' 
       nameLower = 'x-wing'
+    elsif nameLower == 'sentinel class landing craft'
+      nameLower = 'sentinel-class landing craft'
+    elsif nameLower == 'y wing'
+      nameLower = 'y-wing'
     end 
     if nameLower == starship['name'].downcase
       return "What do you want to know about " + starship['name'] + "?" 
