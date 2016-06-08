@@ -165,7 +165,7 @@ elsif (intent == "manufacturer" or
       response = storeSessionAttributeForPlanet(planet, result, false, false)
       JSON.generate(response)
     end 
-  elsif (intent == "height" or 
+  elsif defined?(@request_payload['session']['attributes']) and (intent == "height" or 
         intent == "hair_color" or 
         intent == "home_world" or 
         intent == "character_films" or
@@ -176,14 +176,10 @@ elsif (intent == "manufacturer" or
     puts "---SESSION ATTRIBUTE---"
 
     puts "You have a character"
-    name = ""
     # get name of character
-    if !defined?(@request_payload['session']['attributes'])
-      result = "Which character do you want to know about?"
-    else
-      name = @request_payload['session']['attributes']['input']
-      puts name
-    end 
+    name = @request_payload['session']['attributes']['input']
+    puts name
+
     if (!name)
       result = "You asked for something that is not applicable to what you want to know."
       response = startSessionAttribute(result, true, true)
