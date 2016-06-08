@@ -173,8 +173,7 @@ post '/' do
       response = storeSessionAttributeForPlanet(planet, result, false, false)
       JSON.generate(response)
     end 
-  elsif (sessionAttribute == "character") and 
-        (intent == "height" or 
+  elsif (intent == "height" or 
         intent == "hair_color" or 
         intent == "home_world" or 
         intent == "character_films" or
