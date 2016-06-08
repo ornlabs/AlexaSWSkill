@@ -36,13 +36,7 @@ def getStarship(name)
   	starships.each do |starship|
     puts starship['name']
     nameLower = name.downcase
-    if nameLower == 'x wing' 
-      nameLower = 'x-wing'
-    elsif nameLower == 'sentinel class landing craft'
-      nameLower = 'sentinel-class landing craft'
-    elsif nameLower == 'y wing'
-      nameLower = 'y-wing'
-    end 
+    nameLower = checkForSpecialCase(nameLower)
     if nameLower == starship['name'].downcase
       return "What do you want to know about " + starship['name'] + "?" 
     end 
@@ -113,3 +107,14 @@ def getStarshipSpeed(name)
   end 
   return "Sorry. I cannot find the class of that starship."
 end
+
+
+def checkForSpecialCase(nameLower)
+  if nameLower == 'x wing' 
+    return 'x-wing'
+  elsif nameLower == 'sentinel class landing craft'
+    return 'sentinel-class landing craft'
+  elsif nameLower == 'y wing'
+    return 'y-wing'
+  end 
+end 
