@@ -44,7 +44,12 @@ Alexa reads the opening crawl of the movie.
 
 You can ask Alexa about different Star Wars planets:
 
+```
+Tell me about Tatooine
+```
+
 The endpoints included are orbital period, climate, terrain, population, and residents. 
+
 
 ```
 What is the orbital period?
@@ -58,8 +63,11 @@ Who are the residents?
 
 You can ask about different Star Wars starships:
 
-The endpoints included are manufacturer, length, class, cost, speed.
+```
+Tell me about Death Star
+```
 
+The endpoints included are manufacturer, length, class, cost, speed.
 
 ``` 
 How fast can it go?
