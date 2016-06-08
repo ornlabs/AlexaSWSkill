@@ -23,7 +23,7 @@ post '/' do
   intent = @request_payload['request']['intent']['name'] 
   puts intent
 
-  sessionAttribute = "none"
+  #sessionAttribute = "none"
 
   puts "---SESSION---"
   if defined?(@request_payload['session']['attributes']['starship'])
