@@ -35,7 +35,10 @@ def getStarship(name)
   	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name.downcase == starship['name'].downcase
+    nameLower = name.downcase
+    if nameLower == 'x wing' 
+      nameLower = 'x-wing'
+    if nameLower == starship['name'].downcase
       return "What do you want to know about " + starship['name'] + "?" 
     end 
   end 
