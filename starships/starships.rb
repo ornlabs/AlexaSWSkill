@@ -126,5 +126,8 @@ def checkForSpecialCase(nameLower)
     return 'sentinel-class landing craft'
   elsif nameLower == 'y wing'
     return 'y-wing'
-  end 
+  else 
+    return nameLower
+  end
+
 end 
