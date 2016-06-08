@@ -101,7 +101,7 @@ post '/' do
     JSON.generate(response)
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
-elsif intent == 'starships'
+  elsif intent == 'starships'
 
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['starship']['value']
@@ -118,7 +118,7 @@ elsif intent == 'starships'
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-elsif (sessionAttribute == "starship") and 
+  elsif (sessionAttribute == "starship") and 
       (intent == "manufacturer" or 
       intent == "length" or 
       intent == "class" or 
@@ -136,16 +136,15 @@ elsif (sessionAttribute == "starship") and
         response = startSessionAttribute(result, true, true)
         JSON.generate(response)
       else 
-        puts intent
-        intent = @request_payload['request']['intent']['name']
+        #puts intent
+        #intent = @request_payload['request']['intent']['name']
         puts intent
         result = getStarshipInformation(intent, starship)
         puts "---RESULT---"
         puts result
         response = storeSessionAttributeForStarship(starship, result, false, false)
         JSON.generate(response)
-      end 
-      
+      end   
   elsif (sessionAttribute == "planet") and 
         (intent == "orbital_period" or 
         intent == "climate" or 
@@ -164,8 +163,8 @@ elsif (sessionAttribute == "starship") and
       response = startSessionAttribute(result, true, true)
       JSON.generate(response)
     else
-      intent = @request_payload['request']['intent']['name']
-      puts intent
+      #intent = @request_payload['request']['intent']['name']
+      #puts intent
 
       result = getPlanetInformation(intent, planet)
       puts "---RESULT---"
@@ -195,8 +194,8 @@ elsif (sessionAttribute == "starship") and
       response = startSessionAttribute(result, true, true)
       JSON.generate(response)
     else 
-      intent = @request_payload['request']['intent']['name']
-      puts intent
+      #intent = @request_payload['request']['intent']['name']
+      #puts intent
 
       result = getCharacterInformation(intent, name)
       puts "---RESULT---"
