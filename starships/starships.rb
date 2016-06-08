@@ -48,7 +48,9 @@ def getStarshipManufacturer(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name.downcase == starship['name'].downcase
+    nameLower = name.downcase
+    nameLower = checkForSpecialCase(nameLower)
+    if nameLower == starship['name'].downcase
       return "The manufacturer of " + name + " is " + starship['manufacturer'] + "." 
     end 
   end 
@@ -59,7 +61,9 @@ def getStarshipLength(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name.downcase == starship['name'].downcase
+    nameLower = name.downcase
+    nameLower = checkForSpecialCase(nameLower)
+    if nameLower == starship['name'].downcase
       return name + " is " + starship['length'] + " meters long." 
     end 
   end 
@@ -70,7 +74,9 @@ def getStarshipClass(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name.downcase == starship['name'].downcase
+    nameLower = name.downcase
+    nameLower = checkForSpecialCase(nameLower)
+    if nameLower == starship['name'].downcase
       return name + " belongs to the " + starship['starship_class'] + " class." 
     end 
   end 
@@ -81,7 +87,9 @@ def getStarshipCost(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name.downcase == starship['name'].downcase
+    nameLower = name.downcase
+    nameLower = checkForSpecialCase(nameLower)
+    if nameLower == starship['name'].downcase
     	if starship['cost_in_credits'] == "unknown"
     		return "The cost of the star ship is unknown."
     	else
@@ -97,7 +105,9 @@ def getStarshipSpeed(name)
 	starships = getStarships()
   	starships.each do |starship|
     puts starship['name']
-    if name.downcase == starship['name'].downcase
+    nameLower = name.downcase
+    nameLower = checkForSpecialCase(nameLower)
+    if nameLower == starship['name'].downcase
     	if starship['max_atmosphering_speed'] == "n/a"
     		return "This star ship has no max atmosphering speed."
     	else
