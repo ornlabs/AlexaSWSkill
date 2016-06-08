@@ -111,7 +111,8 @@ elsif intent == 'starships'
   # check that the session attribute is there and that slots does not exist
   # this allows users to switch and ask for a different character
 
-elsif (intent == "manufacturer" or 
+elsif defined?(@request_payload['session']['attributes']['starship']) and 
+      (intent == "manufacturer" or 
       intent == "length" or 
       intent == "class" or 
       intent == "cost" or 
@@ -138,7 +139,8 @@ elsif (intent == "manufacturer" or
         JSON.generate(response)
       end 
       
-  elsif (intent == "orbital_period" or 
+  elsif defined?(@request_payload['session']['attributes']['planet']) and 
+        (intent == "orbital_period" or 
         intent == "climate" or 
         intent == "terrain" or 
         intent == "population" or 
@@ -165,7 +167,8 @@ elsif (intent == "manufacturer" or
       response = storeSessionAttributeForPlanet(planet, result, false, false)
       JSON.generate(response)
     end 
-  elsif defined?(@request_payload['session']['attributes']['input']) and (intent == "height" or 
+  elsif defined?(@request_payload['session']['attributes']['input']) and 
+        (intent == "height" or 
         intent == "hair_color" or 
         intent == "home_world" or 
         intent == "character_films" or
