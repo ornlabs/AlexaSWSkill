@@ -145,7 +145,7 @@ post '/' do
         response = storeSessionAttributeForStarship(starship, result, false, false)
         JSON.generate(response)
       end   
-  elsif (sessionAttribute == "planet") and 
+  elsif defined?(@request_payload['session']['attributes']['planet']) and 
         (intent == "orbital_period" or 
         intent == "climate" or 
         intent == "terrain" or 
@@ -173,7 +173,8 @@ post '/' do
       response = storeSessionAttributeForPlanet(planet, result, false, false)
       JSON.generate(response)
     end 
-  elsif (intent == "height" or 
+  elsif defined?(@request_payload['session']['attributes']['input']) and 
+        (intent == "height" or 
         intent == "hair_color" or 
         intent == "home_world" or 
         intent == "character_films" or
