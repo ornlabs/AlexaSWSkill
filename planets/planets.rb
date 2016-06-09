@@ -85,7 +85,7 @@ end
 def getPlanetResidents(name)
   planets = getPlanets()
   planets.each do |planet|
-    #puts character['name']
+    puts planet['name']
     if name.downcase == planet['name'].downcase
       residents = planet['residents']
       puts residents
