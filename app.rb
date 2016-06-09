@@ -339,8 +339,8 @@ get '/get-starships' do
   #puts starship
 end 
 
-get '/start-session' do 
-  puts returnIntroduction()
+get '/store-session' do 
+  puts storeSessionAttribute("Luke", "Luke", true, false)
 end 
 
 def getDescription(name)
