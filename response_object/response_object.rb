@@ -58,13 +58,12 @@ def storeSessionAttribute(input, result, newSession, endSession)
         "type": "PlainText",
         "text": "' + result + '"
        },
+        "card": {
+        "type": "Simple",
+        "title": "Character",
+        "content": "You asked for a character."
+      }, 
       "shouldEndSession": "' + to_sb(endSession) + '"
-    },
-    "card": {
-
-      "type": "Simple",
-      "title": "Character",
-      "content": "You asked for a character."
     }
   }')
 end
