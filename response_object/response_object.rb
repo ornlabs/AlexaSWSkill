@@ -107,7 +107,7 @@ def storeSessionAttributeForPlanet(planet, result, newSession, endSession)
        },
         "card": {
         "type": "Simple",
-        "title": "' + planet + '",
+        "title": "Star Wars Planet",
         "content": "' + result + '"
       }, 
       "shouldEndSession": "false"
@@ -129,6 +129,11 @@ def storeSessionAttributeForStarship(starship, result, newSession, endSession)
         "type": "PlainText",
         "text": "' + result + '"
        },
+        "card": {
+        "type": "Simple",
+        "title": "Star Wars Starship",
+        "content": "' + result + '"
+      }, 
       "shouldEndSession": "false"
     }
   }')
