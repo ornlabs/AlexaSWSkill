@@ -80,7 +80,6 @@ def getCharacterFilms(name)
   characters.each do |character|
     nameLower = character['name'].downcase
     if nameLower == character['name'].downcase 
-      if name == character['name']
         films = character['films']
         puts films
 
@@ -189,8 +188,8 @@ end
 def getCharacterSpecies(name)
   characters = getAllCharacters()
   characters.each do |character|
-      nameLower = character['name'].downcase
-      if nameLower == character['name'].downcase 
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
       url_page = character['species'][0]
 
       puts url_page
