@@ -143,7 +143,7 @@ def startSessionAttribute(result, newSession, endSession)
 end 
 
 
-def storeSessionAttribute(input, result, newSession, endSession)
+def returnError(input, result, newSession, endSession)
   puts "---RESULT---"
   puts result
   json = JSON.parse(
