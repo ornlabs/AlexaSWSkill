@@ -50,7 +50,7 @@ end
 def getCharacterHeight(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
       return "The height of " + name + " is " + character['height'] + ' centimeters. Anything else?'
     end 
@@ -62,7 +62,7 @@ end
 def getCharacterHomeWorld(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
       url_page = character['homeworld']
       #puts url_page
@@ -78,7 +78,7 @@ end
 def getCharacterFilms(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
         films = character['films']
         puts films
@@ -155,7 +155,7 @@ end
 def getCharacterSkinColor(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
       return "The skin color of " + name + " is " + character['skin_color'] + '. Anything else?'
     end 
@@ -166,7 +166,7 @@ end
 def getCharacterBirthYear(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
       return "The birth year of " + name + " is " + character['birth_year'] + '. Anything else?'
     end 
@@ -177,7 +177,7 @@ end
 def getCharacterEyeColor(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
       return "The eye color of " + name + " is " + character['eye_color'] + '. Anything else?'
     end 
@@ -188,7 +188,7 @@ end
 def getCharacterSpecies(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
       url_page = character['species'][0]
 
