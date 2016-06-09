@@ -35,7 +35,7 @@ def getCharacterName(name)
   characters = getAllCharacters()
   characters.each do |character|
     puts character['name']
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == "obi wan kenobi"
       nameLower == "obi-wan kenobi"
     end
@@ -140,7 +140,7 @@ end
 def getCharacterHairColor(name)
   characters = getAllCharacters()
   characters.each do |character|
-    nameLower = character['name'].downcase
+    nameLower = name.downcase
     if nameLower == character['name'].downcase 
       if character['hair_color'] == 'none'
         return name + " has no hair color."
