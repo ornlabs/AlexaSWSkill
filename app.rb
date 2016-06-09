@@ -337,7 +337,7 @@ get '/get-starships' do
 end 
 
 get '/start-session' do 
-  puts startSessionAttribute("Test", true, true)
+  puts returnIntroduction()
 end 
 
 def getDescription(name)

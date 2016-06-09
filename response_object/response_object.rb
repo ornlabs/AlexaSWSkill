@@ -31,7 +31,7 @@ def returnIntroduction()
           "type": "PlainText",
           "text": "Welcome to Jedi Archives. What would you like to know?"
         },
-        "shouldEndSession": false
+        "shouldEndSession": "' + to_sb('false') + '"
       }
     }')
 end 
