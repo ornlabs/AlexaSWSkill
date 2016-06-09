@@ -62,6 +62,12 @@ def storeSessionAttribute(input, result, newSession, endSession)
         "type": "Simple",
         "title": "Star Wars Character",
         "content": "' + result + '"
+      },
+      "reprompt": {
+          "outputSpeech": {
+          "type": "PlainText",
+          "text": "Would you like to know anything else?"
+        }
       }, 
       "shouldEndSession": "' + to_sb(endSession) + '"
     }
@@ -87,6 +93,12 @@ def storeSessionAttributeForMovie(input, result, newSession, endSession)
         "title": "Star Wars Movie",
         "content": "' + result + '"
       },
+      "reprompt": {
+          "outputSpeech": {
+          "type": "PlainText",
+          "text": "Would you like to know anything else?"
+        }
+      }, 
       "shouldEndSession": "false"
     }
   }')
@@ -109,6 +121,12 @@ def storeSessionAttributeForPlanet(planet, result, newSession, endSession)
         "type": "Simple",
         "title": "Star Wars Planet",
         "content": "' + result + '"
+      }, 
+      "reprompt": {
+          "outputSpeech": {
+          "type": "PlainText",
+          "text": "Would you like to know anything else?"
+        }
       }, 
       "shouldEndSession": "false"
     }
@@ -133,6 +151,12 @@ def storeSessionAttributeForStarship(starship, result, newSession, endSession)
         "type": "Simple",
         "title": "Star Wars Starship",
         "content": "' + result + '"
+      }, 
+      "reprompt": {
+          "outputSpeech": {
+          "type": "PlainText",
+          "text": "Would you like to know anything else?"
+        }
       }, 
       "shouldEndSession": "false"
     }
