@@ -39,7 +39,7 @@ def getCharacterName(name)
     if nameLower == "obi wan kenobi"
       nameLower == "obi-wan kenobi"
     end
-    if name.downcase == character['name'].downcase
+    if nameLower == character['name'].downcase
       return "What do you want to know about " + name + " ?"
     end 
   end 
@@ -50,7 +50,8 @@ end
 def getCharacterHeight(name)
   characters = getAllCharacters()
   characters.each do |character|
-    if name == character['name']
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
       return "The height of " + name + " is " + character['height'] + ' centimeters. Anything else?'
     end 
   end 
@@ -61,8 +62,8 @@ end
 def getCharacterHomeWorld(name)
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
-    if name == character['name']
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
       url_page = character['homeworld']
       #puts url_page
       homeWorld = HTTParty.get(url_page)['name']
@@ -77,17 +78,18 @@ end
 def getCharacterFilms(name)
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
-    if name == character['name']
-      films = character['films']
-      puts films
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
+      if name == character['name']
+        films = character['films']
+        puts films
 
-      result = name + " has appeared in "
+        result = name + " has appeared in "
 
-      count = films.length
-      i = 0
+        count = films.length
+        i = 0
 
-      films.each do |film|
+        films.each do |film|
         if i == count - 1 and count > 1
           puts result 
           result += " and " + HTTParty.get(film)['title']
@@ -139,8 +141,8 @@ end
 def getCharacterHairColor(name)
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
-    if name == character['name']
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
       if character['hair_color'] == 'none'
         return name + " has no hair color."
       else
@@ -154,8 +156,8 @@ end
 def getCharacterSkinColor(name)
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
-    if name == character['name']
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
       return "The skin color of " + name + " is " + character['skin_color'] + '. Anything else?'
     end 
   end 
@@ -165,8 +167,8 @@ end
 def getCharacterBirthYear(name)
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
-    if name == character['name']
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
       return "The birth year of " + name + " is " + character['birth_year'] + '. Anything else?'
     end 
   end 
@@ -176,8 +178,8 @@ end
 def getCharacterEyeColor(name)
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
-    if name == character['name']
+    nameLower = character['name'].downcase
+    if nameLower == character['name'].downcase 
       return "The eye color of " + name + " is " + character['eye_color'] + '. Anything else?'
     end 
   end 
@@ -187,8 +189,8 @@ end
 def getCharacterSpecies(name)
   characters = getAllCharacters()
   characters.each do |character|
-    #puts character['name']
-    if name == character['name']
+      nameLower = character['name'].downcase
+      if nameLower == character['name'].downcase 
       url_page = character['species'][0]
 
       puts url_page
