@@ -90,9 +90,14 @@ def getPlanetResidents(name)
       residents = planet['residents']
       puts residents
 
-      result = name + " has the following residents: "
+      
 
       count = residents.length
+
+      if count == 0
+        result = "There are no residents for this planet."
+      else
+        result = name + " has the following residents: "
       i = 0
 
       residents.each do |resident|
@@ -110,6 +115,7 @@ def getPlanetResidents(name)
       end 
       
       return result + '. Anything else?'
+      end 
     end 
   end 
 
