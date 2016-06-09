@@ -93,28 +93,27 @@ def getPlanetResidents(name)
       
 
       count = residents.length
-
+      puts count
       if count == 0
         result = "There are no residents for this planet."
       else
         result = name + " has the following residents: "
-      i = 0
+        i = 0
 
-      residents.each do |resident|
-        if i == count - 1 and count > 1
-          puts result 
-          result += " and " + HTTParty.get(resident)['name']
-        else
-          puts "---Resident---"
-          puts resident
-          person = HTTParty.get(resident)['name'] 
-          puts person
-          result += person + ", "
+        residents.each do |resident|
+          if i == count - 1 and count > 1
+            puts result 
+            result += " and " + HTTParty.get(resident)['name']
+          else
+            puts "---Resident---"
+            puts resident
+            person = HTTParty.get(resident)['name'] 
+            puts person
+            result += person + ", "
+          end 
+          i += 1
         end 
-        i += 1
-      end 
-      
-      return result + '. Anything else?'
+        return result + '. Anything else?'
       end 
     end 
   end 
