@@ -26,6 +26,9 @@ def returnIntroduction()
     json = JSON.parse(
     '{
       "version": "1.0",
+       "session": {
+         "new": "' + to_sb('true') + '"
+      },
       "response": {
         "outputSpeech": {
           "type": "PlainText",
