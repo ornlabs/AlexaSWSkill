@@ -20,8 +20,8 @@ post '/' do
   puts @request_payload
 
   puts "---INTENT---"
-  intent = @request_payload['request']['intent']['name'] 
-  puts intent
+  #intent = @request_payload['request']['intent']['name'] 
+  #puts intent
 
   #sessionAttribute = "none"
 
