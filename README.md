@@ -164,7 +164,6 @@ How much does it cost?
 6. The Empire Strikes Back
 7. The Force Awakens
 
-
 * Note that for some items there are either dashes or numbers inside the name and NLP can't format those into query-able strings and so those have been handled with reprompts. 
 * If request takes too long, crash.
 * Random crashes sometimes. 
