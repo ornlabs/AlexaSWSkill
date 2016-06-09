@@ -27,14 +27,14 @@ def returnIntroduction()
     '{
       "version": "1.0",
        "session": {
-         "new": "' + to_sb('true') + '"
+         "new": "' + to_sb(true) + '"
       },
       "response": {
         "outputSpeech": {
           "type": "PlainText",
           "text": "Welcome to Jedi Archives. What would you like to know?"
         },
-        "shouldEndSession": "' + to_sb('false') + '"
+        "shouldEndSession": "' + to_sb(false) + '"
       }
     }')
 end 
