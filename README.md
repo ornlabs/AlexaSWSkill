@@ -2,6 +2,8 @@
 
 Here's the link to Alexa skills: <http://alexa.amazon.com>
 
+Name of the skill is Jedi Archives, with many thanks to Darren. 
+
 ## Characters
 
 Here's the steps of the interaction:
@@ -9,7 +11,7 @@ Here's the steps of the interaction:
 Say: 
 
 ```
-Alexa, ask Comic Test, tell me about Luke Skywalker
+Alexa, ask Jedi Archives, tell me about Luke Skywalker
 ```
 
 Alexa will make the POST request and an API call to the Star Wars API. 
@@ -35,7 +37,7 @@ You can also ask Alexa about movies as well:
 Say: 
 
 ```
-Alexa, ask Comic Test, tell me about A New Hope
+Alexa, ask Jedi Archives, tell me about A New Hope
 ```
 
 Alexa reads the opening crawl of the movie. 
@@ -77,8 +79,6 @@ How fast can it go?
 How much does it cost?
 ```
 
-
-
 ## Testing
 
 ###Working Characters:
@@ -105,7 +105,6 @@ How much does it cost?
 20. Lobot
 ...
 
-
 ###Working Planets
 
 1. Hoth 
@@ -130,7 +129,7 @@ How much does it cost?
 20. Dantooine
 ...
 
-### Starships
+###Working Starships
 
 1. Sentinel class landing craft
 2. Death Star
@@ -153,6 +152,17 @@ How much does it cost?
 19. Naboo star skiff
 20. Jedi Interceptor 
 ...
+
+
+###Working Films
+
+1. A New Hope
+2. Attack of the Clones
+3. The Phantom Menace
+4. Revenge of the Sith
+5. Return of the Jedi
+6. The Empire Strikes Back
+7. The Force Awakens
 
 If request takes too long, crash.
 Random crashes sometimes. 
