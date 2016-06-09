@@ -105,6 +105,11 @@ def storeSessionAttributeForPlanet(planet, result, newSession, endSession)
         "type": "PlainText",
         "text": "' + result + '"
        },
+        "card": {
+        "type": "Simple",
+        "title": "' + planet + '",
+        "content": "' + result + '"
+      }, 
       "shouldEndSession": "false"
     }
   }')
