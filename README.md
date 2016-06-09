@@ -164,8 +164,10 @@ How much does it cost?
 6. The Empire Strikes Back
 7. The Force Awakens
 
-If request takes too long, crash.
-Random crashes sometimes. 
-If you interact with it for a long time, you get a exceeded_max_reprompts error.
-If left too long, she times out. 
+
+* Note that for some items there are either dashes or numbers inside the name and NLP can't format those into query-able strings and so those have been handled with reprompts. 
+* If request takes too long, crash.
+* Random crashes sometimes. 
+* If you interact with it for a long time, you get a exceeded_max_reprompts error.
+* If left too long, she times out. 
 
