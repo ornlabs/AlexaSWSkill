@@ -95,7 +95,7 @@ def getPlanetResidents(name)
       count = residents.length
       puts count
       if count == 0
-        result = "There are no residents for this planet."
+        return "There are no residents for this planet. Anything else?"
       else
         result = name + " has the following residents: "
         i = 0
