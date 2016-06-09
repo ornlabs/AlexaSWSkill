@@ -82,6 +82,11 @@ def storeSessionAttributeForMovie(input, result, newSession, endSession)
         "type": "PlainText",
         "text": "' + result + '"
        },
+        "card": {
+        "type": "Simple",
+        "title": "Star Wars Movie",
+        "content": "' + result + '"
+      }
       "shouldEndSession": "false"
     }
   }')
