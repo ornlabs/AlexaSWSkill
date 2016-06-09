@@ -22,6 +22,21 @@ def returnJSON(text, option)
 end 
 
 
+def returnIntroduction()
+    json = JSON.parse(
+    '{
+      "version": "1.0",
+      "response": {
+        "outputSpeech": {
+          "type": "PlainText",
+          "text": "Welcome to Jedi Archives. What would you like to know?"
+        },
+        "shouldEndSession": false
+      }
+    }')
+end 
+
+
 def storeSessionAttribute(input, result, newSession, endSession)
   puts "---RESULT---"
   puts result

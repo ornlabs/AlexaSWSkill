@@ -37,16 +37,8 @@ post '/' do
 
   # type == LaunchRequest
   if @request_payload['request']['type'] == 'LaunchRequest'
-    '{
-      "version": "1.0",
-      "response": {
-        "outputSpeech": {
-          "type": "PlainText",
-          "text": "Go."
-        },
-        "shouldEndSession": true
-      }
-    }'
+    response = returnIntroduction()
+    JSON.generate(response)
   elsif intent == 'AMAZON.CancelIntent'
 
     
