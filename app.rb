@@ -20,7 +20,10 @@ post '/' do
   puts @request_payload
 
   puts "---INTENT---"
-  #intent = @request_payload['request']['intent']['name'] 
+
+  if defined?(@request_payload['request']['intent']['name'])
+    intent = @request_payload['request']['intent']['name']
+  end 
   #puts intent
 
   #sessionAttribute = "none"
