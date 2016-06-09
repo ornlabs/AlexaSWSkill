@@ -61,7 +61,7 @@ def storeSessionAttribute(input, result, newSession, endSession)
         "card": {
         "type": "Simple",
         "title": "Star Wars Character",
-        "content": "You asked for ' + result + '"
+        "content": "' + result + '"
       }, 
       "shouldEndSession": "' + to_sb(endSession) + '"
     }
