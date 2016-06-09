@@ -86,7 +86,7 @@ def storeSessionAttributeForMovie(input, result, newSession, endSession)
         "type": "Simple",
         "title": "Star Wars Movie",
         "content": "' + result + '"
-      }
+      },
       "shouldEndSession": "false"
     }
   }')
