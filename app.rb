@@ -10,7 +10,6 @@ require './films/films'
 require './response_object/response_object'
 require './planets/planets'
 require './starships/starships'
-require 'net/http'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
