@@ -24,7 +24,7 @@ post '/' do
 
   # verify that the request is indeed coming from Alexa
 
-  AlexaVerifier = AlexaVerifer.new
+  AlexaVerifier = AlexaVerifer.new()
 
   puts AlexaVerifier
 
