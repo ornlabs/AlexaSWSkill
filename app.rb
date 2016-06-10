@@ -20,15 +20,14 @@ post '/' do
   @request_payload = JSON.parse request.body.read
 
   puts "---REQUEST PAYLOAD---"
-  puts @request_payload
-
+  request_verify = request.body.read
   # verify that the request is indeed coming from Alexa
   begin
     verifier = AlexaVerifer.new
     verifier.verify!(
       env['HTTP_SignatureCertChainUrl'], 
       env['HTTP_Signature'], 
-      @request_payload
+      request_verify
     )
   rescue AlexaVerifier::VerificationError => e
       puts "The request is not coming from Alexa.\n" 
