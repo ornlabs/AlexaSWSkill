@@ -191,7 +191,7 @@ def returnError()
     "response": {
       "outputSpeech": {
         "type": "PlainText",
-        "text": " Nothing is found. Try again. "
+        "text": "You asked for something that I cannot find. Try again. "
       },
       "shouldEndSession": "false"
     }
