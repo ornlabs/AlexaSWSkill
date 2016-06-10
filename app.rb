@@ -26,8 +26,8 @@ post '/' do
   begin
     verifier = AlexaVerifer.new
     verifier.verify!(
-      env['SignatureCertChainUrl'], 
-      env['Signature'], 
+      env['HTTP_SignatureCertChainUrl'], 
+      env['HTTP_Signature'], 
       request.body.read
     )
   rescue AlexaVerifier::VerificationError => e
