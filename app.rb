@@ -35,9 +35,6 @@ post '/' do
       puts "The request is not coming from Alexa.\n" + e.message
       return ""
   end
-
-
-  end 
   puts "---INTENT---"
 
   if defined?(@request_payload['request']['intent']['name'])
