@@ -14,17 +14,16 @@ def getAllCharacters()
     url_page = 'http://swapi.co/api/people/?page=' + i.to_s
     puts url_page
     characters = HTTParty.get(url_page)['results']
-    if characters.success?
+    #puts "---Characters---"
+    #puts characters
 
-      characters.each do |character|
-        puts character['name']
-        charactersList << character
-      end 
-
-      i += 1
-    else 
-      return "The request took too long. Try again."
+    characters.each do |character|
+      puts character['name']
+      charactersList << character
     end 
+
+    i += 1
+
   end 
   #puts charactersList
   return charactersList
@@ -33,19 +32,14 @@ end
 
 def getCharacterName(name)
   puts name
-  characters = getAllCharacters()
-  if characters == "The request took too long. Try again."
-    return "Sorry. I cannot find that character."
-  else 
-    characters.each do |character|
-      puts character['name']
-      nameLower = name.downcase
-      if nameLower == "obi wan kenobi"
-        nameLower == "obi-wan kenobi"
-      end
-      if nameLower == character['name'].downcase
-        return "What do you want to know about " + name + " ?"
-      end 
+  characters.each do |character|
+    puts character['name']
+    nameLower = name.downcase
+    if nameLower == "obi wan kenobi"
+      nameLower == "obi-wan kenobi"
+    end
+    if nameLower == character['name'].downcase
+      return "What do you want to know about " + name + " ?"
     end 
   end 
   return "Sorry. I cannot find that character."
