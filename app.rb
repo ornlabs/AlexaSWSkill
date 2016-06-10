@@ -10,7 +10,7 @@ require './films/films'
 require './response_object/response_object'
 require './planets/planets'
 require './starships/starships'
-require 'alexa_verifer'
+require 'alexa_verifier'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
