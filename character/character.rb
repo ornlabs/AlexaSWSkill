@@ -31,7 +31,7 @@ end
 
 
 def getCharacterName(name)
-  puts name
+  characters = getAllCharacters()
   characters.each do |character|
     puts character['name']
     nameLower = name.downcase
