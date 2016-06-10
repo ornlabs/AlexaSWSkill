@@ -200,7 +200,7 @@ post '/' do
       JSON.generate(response)
     end 
   else
-    response = returnError("Sorry, I cannot find anything. Try again.", false, false)
+    response = returnError()
     JSON.generate(response)
   end 
 end 

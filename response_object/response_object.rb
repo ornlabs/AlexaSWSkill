@@ -184,19 +184,18 @@ def startSessionAttribute(result, newSession, endSession)
 end 
 
 
-def returnError(result, newSession, endSession)
-  puts "---RESULT---"
-  puts result
+def returnError()
   json = JSON.parse(
   '{
     "version": "1.0",
     "response": {
       "outputSpeech": {
         "type": "PlainText",
-        "text": "' + result + '"
-       },
-      "shouldEndSession": "' + to_sb(endSession) + '"
-    }')
+        "text": " Nothing is found. Try again. "
+      },
+      "shouldEndSession": "false"
+    }
+  }')
 end 
 
 def to_sb(option)
