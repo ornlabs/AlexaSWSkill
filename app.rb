@@ -13,10 +13,10 @@ require './starships/starships'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
+  puts JSON.parse request
   request.body.rewind
 
   puts "---REQUEST PAYLOAD---"
-  puts request.header
   @request_payload = JSON.parse request.body.read
 
   puts "---REQUEST PAYLOAD---"
