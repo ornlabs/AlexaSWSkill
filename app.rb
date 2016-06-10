@@ -23,7 +23,7 @@ post '/' do
   request_verify = request.body.read
   # verify that the request is indeed coming from Alexa
   begin
-    verifier = AlexaVerifer.new
+    verifier = AlexaVerifier.new
     verifier.verify!(
       env['HTTP_SignatureCertChainUrl'], 
       env['HTTP_Signature'], 
