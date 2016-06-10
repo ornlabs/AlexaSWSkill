@@ -13,7 +13,6 @@ require './starships/starships'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
-  #puts JSON.parse request
   request.body.rewind
 
   puts "---REQUEST PAYLOAD---"
@@ -24,9 +23,9 @@ post '/' do
 
   # verify that the request is indeed coming from Alexa
 
-  AlexaVerifier = AlexaVerifer.new()
+  #AlexaVerifier = AlexaVerifer.new()
 
-  puts AlexaVerifier
+  #puts AlexaVerifier
 
   puts "---INTENT---"
 
