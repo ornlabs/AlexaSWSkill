@@ -16,7 +16,7 @@ post '/' do
   request.body.rewind
 
   puts "---REQUEST PAYLOAD---"
-  puts request.body
+  puts request.headers
   @request_payload = JSON.parse request.body.read
 
   puts "---REQUEST PAYLOAD---"
