@@ -10,10 +10,11 @@ require './films/films'
 require './response_object/response_object'
 require './planets/planets'
 require './starships/starships'
+require 'net/http'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
-  puts JSON.parse request
+  #puts JSON.parse request
   request.body.rewind
 
   puts "---REQUEST PAYLOAD---"
@@ -21,6 +22,12 @@ post '/' do
 
   puts "---REQUEST PAYLOAD---"
   puts @request_payload
+
+  # verify that the request is indeed coming from Alexa
+
+  AlexaVerifier = AlexaVerifer.new
+
+  puts AlexaVerifier
 
   puts "---INTENT---"
 
