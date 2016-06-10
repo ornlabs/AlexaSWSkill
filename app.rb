@@ -19,7 +19,7 @@ post '/' do
   
   puts "---REQUEST PAYLOAD---"
   request_verify = request.body.read
-  
+
   # verify that the request is indeed coming from Alexa
   begin
       verifier = AlexaVerifier.new
@@ -35,7 +35,7 @@ post '/' do
   puts "---INTENT---"
 
   puts "---REQUEST PAYLOAD---"
-  @request_payload = JSON.parse request.body.read
+  @request_payload = JSON.parse request_verify 
 
 
   if defined?(@request_payload['request']['intent']['name'])
