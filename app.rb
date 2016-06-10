@@ -1,3 +1,4 @@
+require 'alexa_verifier'
 require 'sinatra'
 require 'json'
 require 'net/http'
@@ -10,30 +11,31 @@ require './films/films'
 require './response_object/response_object'
 require './planets/planets'
 require './starships/starships'
-require 'alexa_verifier'
 #use Rack::Env, envfile: 'config/local_env.yml'
 
 post '/' do
   request.body.rewind
 
-  puts "---REQUEST PAYLOAD---"
-  @request_payload = JSON.parse request.body.read
-
+  
   puts "---REQUEST PAYLOAD---"
   request_verify = request.body.read
   # verify that the request is indeed coming from Alexa
   begin
-    verifier = AlexaVerifier.new
-    verifier.verify!(
-      env['HTTP_SIGNATURECERTCHAINURL'], 
-      env['HTTP_SIGNATURE'], 
-      request_verify
-    )
-  rescue AlexaVerifier::VerificationError => e
-      puts "The request is not coming from Alexa.\n" 
+      verifier = AlexaVerifier.new
+      verifier.verify!(
+        env["HTTP_SIGNATURECERTCHAINURL"],
+        env["HTTP_SIGNATURE"],
+        raw_request
+      )
+    rescue AlexaVerifier::VerificationError => e
+      puts "Unable to verify request is valid and from Alexa.\n" + e.message
       return ""
   end
   puts "---INTENT---"
+
+  puts "---REQUEST PAYLOAD---"
+  @request_payload = JSON.parse request.body.read
+
 
   if defined?(@request_payload['request']['intent']['name'])
     intent = @request_payload['request']['intent']['name']
