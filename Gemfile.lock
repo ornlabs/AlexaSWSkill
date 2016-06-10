@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    alexa_verifier (0.1.0)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -20,6 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alexa_verifier
   httparty
   rack-env
   sinatra
