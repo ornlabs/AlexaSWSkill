@@ -25,7 +25,7 @@ post '/' do
       verifier.verify!(
         env["HTTP_SIGNATURECERTCHAINURL"],
         env["HTTP_SIGNATURE"],
-        raw_request
+        request_verify
       )
     rescue AlexaVerifier::VerificationError => e
       puts "Unable to verify request is valid and from Alexa.\n" + e.message
