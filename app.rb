@@ -23,10 +23,13 @@ post '/' do
 
   # verify that the request is indeed coming from Alexa
 
-  AlexaVerifier = AlexaVerifer.new()
+  AlexaVerifier = AlexaVerifer.new
 
   puts AlexaVerifier
 
+
+
+  end 
   puts "---INTENT---"
 
   if defined?(@request_payload['request']['intent']['name'])
