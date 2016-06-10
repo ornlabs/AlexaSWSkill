@@ -12,12 +12,22 @@ D. A full description explaining the skill's core functionality:
 
 Are you a passionate Star Wars fan? If yes, Jedi Archives is a treasure trove of knowledge that you wouldn't want to miss out on. Ask it to tell you about different characters, planets, and even starships. 
 
-Want to hear something about one of the movies. Just ask and get a reading of its "opening crawl."
+Detailed Description
 
-Currently, the skill can answer questions about the character's: height, hair color, home world, character films, skin color, birth year, eye color, and species
+To start the skill you can do either of the following:
 
-Currently, the skill can answer questions about the planet's: orbital period, climate, terrain, population, and residents
+1. Alexa, start Jedi archives 
+2. Alexa, ask Jedi archives
 
-Currently, the skill can answer questions about the starship's: manufacturer, length, class, cost, and speed
+Then you can begin asking the skill such as "tell me about Luke Skywalker." You can then follow up with a question such as: "What is his hair color?"
+
+At this time, the skill supports the following pieces of information for character: height, hair color, home world, character films, skin color, birth year, eye color, and species.
+
+You can do the same for planets. At this time, the skill supports the following pieces of information: orbital period, climate, terrain, population, and residents. 
+
+You can do the same for starships. At this time, the skill supports the following pieces of information: manufacturer, length, class, cost, and speed. 
+
+Finally, you can also ask about the current seven Star Wards films. The skill will fetch a description or the "opening crawl" of the particular film. 
+
 
 E. Invocation name: jedi archives

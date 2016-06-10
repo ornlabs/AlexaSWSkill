@@ -14,6 +14,9 @@ require './starships/starships'
 
 post '/' do
   request.body.rewind
+
+  puts "---REQUEST PAYLOAD---"
+  puts request
   @request_payload = JSON.parse request.body.read
 
   puts "---REQUEST PAYLOAD---"
