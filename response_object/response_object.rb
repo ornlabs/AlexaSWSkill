@@ -184,19 +184,12 @@ def startSessionAttribute(result, newSession, endSession)
 end 
 
 
-def returnError(input, result, newSession, endSession)
+def returnError(result, newSession, endSession)
   puts "---RESULT---"
   puts result
   json = JSON.parse(
   '{
-
     "version": "1.0",
-    "session": {
-      "new": "' + to_sb(newSession) + '"
-    },
-    "sessionAttributes": {
-      "input": "' + input + '"
-    },
     "response": {
       "outputSpeech": {
         "type": "PlainText",
