@@ -22,11 +22,18 @@ post '/' do
   puts @request_payload
 
   # verify that the request is indeed coming from Alexa
+  begin
+  verifier = AlexaVerifer.new
 
-  AlexaVerifier = AlexaVerifer.new
-
-  puts AlexaVerifier
-
+  verifier.verify!(
+    request.headers['SignatureCertChainUrl'], 
+    request.headers['Signature'], 
+    request.body.read
+  )
+  rescue AlexaVerifier::VerificationError => e
+      puts "The request is not coming from Alexa.\n" + e.message
+      return ""
+  end
 
 
   end 
