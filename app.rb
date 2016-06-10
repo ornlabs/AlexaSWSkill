@@ -30,7 +30,6 @@ post '/' do
       request.headers['Signature'], 
       request.body.read
     )
-  end 
   rescue AlexaVerifier::VerificationError => e
       puts "The request is not coming from Alexa.\n" + e.message
       return ""
