@@ -18,7 +18,7 @@ post '/' do
 
   
   puts "---REQUEST PAYLOAD---"
-  request_verify = request.body.read
+  request_verify = JSON.parse request.body.read
   # verify that the request is indeed coming from Alexa
   begin
       verifier = AlexaVerifier.new
