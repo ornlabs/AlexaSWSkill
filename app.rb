@@ -401,6 +401,7 @@ def getCharacterInformation(intent, name)
     puts "Timeout!" + e.message
     return "Can you repeat that more clearly please?"
   end 
+  return "Can you repeat that more clearly please?"
 end 
 
 def getPlanetInformation(intent, name)
@@ -424,6 +425,7 @@ def getPlanetInformation(intent, name)
     puts "Timeout!" + e.message
     return "Can you repeat that more clearly please?"
   end 
+  return "Can you repeat that more clearly please?"
 end 
 
 def getStarshipInformation(intent, name)
@@ -447,4 +449,5 @@ def getStarshipInformation(intent, name)
     puts "Timeout!" + e.message
     return "Can you repeat that more clearly please?"
   end 
+  return "Can you repeat that more clearly please?"
 end 
