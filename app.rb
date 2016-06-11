@@ -375,25 +375,32 @@ end
 
  
 def getCharacterInformation(intent, name)
-  if intent == "height"
-    return getCharacterHeight(name)
-  elsif intent == "hair_color"
-    return getCharacterHairColor(name)
-  elsif intent == "home_world"
-    return getCharacterHomeWorld(name)
-  elsif intent == "character_films"
-    return getCharacterFilms(name)
-  elsif intent == "skin_color"
-    return getCharacterSkinColor(name)
-  elsif intent == "birth_year"
-    return getCharacterBirthYear(name)
-  elsif intent == "eye_color"
-    return getCharacterEyeColor(name)
-  elsif intent == "species"
-    return getCharacterSpecies(name)
-  else
-    return "I didn't catch that. Please try again. What do you want to know?"
-  end
+  begin
+  Timeout::timeout(5) do
+    if intent == "height"
+      return getCharacterHeight(name)
+    elsif intent == "hair_color"
+      return getCharacterHairColor(name)
+    elsif intent == "home_world"
+      return getCharacterHomeWorld(name)
+    elsif intent == "character_films"
+      return getCharacterFilms(name)
+    elsif intent == "skin_color"
+      return getCharacterSkinColor(name)
+    elsif intent == "birth_year"
+      return getCharacterBirthYear(name)
+    elsif intent == "eye_color"
+      return getCharacterEyeColor(name)
+    elsif intent == "species"
+      return getCharacterSpecies(name)
+    else
+      return "I didn't catch that. Please try again. What do you want to know?"
+    end
+  end 
+  rescue Timeout::Error => e
+    puts "Timeout!" + e.message
+    return "Can you repeat that more clearly please?"
+  end 
 end 
 
 def getPlanetInformation(intent, name)
