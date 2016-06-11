@@ -404,33 +404,47 @@ def getCharacterInformation(intent, name)
 end 
 
 def getPlanetInformation(intent, name)
-  if intent == "orbital_period"
-    return getPlanetOrbitalPeriod(name)
-  elsif intent == "climate"
-    return getPlanetClimate(name)
-  elsif intent == "terrain"
-    return getPlanetTerrain(name)
-  elsif intent == "population"
-    return getPlanetPopulation(name)
-  elsif intent == "residents"
-    return getPlanetResidents(name)
-  else
-    return "I didn't catch that. Please try again. What do you want to know?"
+  begin
+  Timeout::timeout(5) do
+    if intent == "orbital_period"
+      return getPlanetOrbitalPeriod(name)
+    elsif intent == "climate"
+      return getPlanetClimate(name)
+    elsif intent == "terrain"
+      return getPlanetTerrain(name)
+    elsif intent == "population"
+      return getPlanetPopulation(name)
+    elsif intent == "residents"
+      return getPlanetResidents(name)
+    else
+      return "I didn't catch that. Please try again. What do you want to know?"
+    end 
   end
+  rescue Timeout::Error => e
+    puts "Timeout!" + e.message
+    return "Can you repeat that more clearly please?"
+  end 
 end 
 
 def getStarshipInformation(intent, name)
-  if intent == "manufacturer"
-    return getStarshipManufacturer(name)
-  elsif intent == "length"
-    return getStarshipLength(name)
-  elsif intent == "class"
-    return getStarshipClass(name)
-  elsif intent == "cost"
-    return getStarshipCost(name)
-  elsif intent == "speed"
-    return getStarshipSpeed(name)
-  else
-    return "I didn't catch that. Please try again. What do you want to know?"
-  end
+  begin
+  Timeout::timeout(5) do
+    if intent == "manufacturer"
+      return getStarshipManufacturer(name)
+    elsif intent == "length"
+      return getStarshipLength(name)
+    elsif intent == "class"
+      return getStarshipClass(name)
+    elsif intent == "cost"
+      return getStarshipCost(name)
+    elsif intent == "speed"
+      return getStarshipSpeed(name)
+    else
+      return "I didn't catch that. Please try again. What do you want to know?"
+    end 
+  end 
+  rescue Timeout::Error => e
+    puts "Timeout!" + e.message
+    return "Can you repeat that more clearly please?"
+  end 
 end 
