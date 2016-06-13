@@ -88,7 +88,15 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['person']['value']
     puts @input
 
-    character = getCharacterName(@input)     
+    begin
+    Timeout::timeout(5) do
+      character = getCharacterName(@input)
+    end 
+    rescue Timeout::Error => e
+      puts "Timeout!" + e.message
+      result = "Can you repeat that more clearly please?"
+    end    
+
     if character != "Sorry. I cannot find that character."
       result = character
     else
