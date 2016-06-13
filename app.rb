@@ -88,6 +88,7 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['person']['value']
     puts @input
 
+    character = "none"
     begin
     Timeout::timeout(5) do
       character = getCharacterName(@input)
