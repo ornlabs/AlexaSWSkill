@@ -32,10 +32,20 @@ post '/' do
       puts "Unable to verify request is valid and from Alexa.\n" + e.message
       return ""
   end
+
+
   puts "---INTENT---"
 
   puts "---REQUEST PAYLOAD---"
   @request_payload = JSON.parse request_verify 
+
+  # verify that the application ID is the one we created:
+
+  applicationID = "amzn1.echo-sdk-ams.app.ac619ff9-1e85-45fe-84c5-9b8c39843680"
+  if applicationID != @request_payload["session"]["application"]["applicationId"]
+    puts "The application id is not the same one that was created by us\n" + e.message
+    return ""
+  end 
 
 
   if defined?(@request_payload['request']['intent']['name'])
@@ -147,7 +157,7 @@ post '/' do
       puts "Timeout!" + e.message
       starship = "Can you repeat that more clearly please?"
     end    
-    
+
     if starship != "Sorry. I cannot find that starship."
       result = character
     else
