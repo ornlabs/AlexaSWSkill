@@ -95,6 +95,7 @@ post '/' do
     rescue Timeout::Error => e
       puts "Timeout!" + e.message
       result = "Can you repeat that more clearly please?"
+      return result
     end    
 
     if character != "Sorry. I cannot find that character."
