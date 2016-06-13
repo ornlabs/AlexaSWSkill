@@ -90,7 +90,7 @@ post '/' do
 
     character = "none"
     begin
-    Timeout::timeout(5) do
+      Timeout::timeout(5) do
       character = getCharacterName(@input)
     end 
     rescue Timeout::Error => e
@@ -113,7 +113,16 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['planet']['value']
     puts @input
 
-    planet = getPlanet(@input)
+    planet = "none"
+    begin
+      Timeout::timeout(5) do
+      planet = getPlanet(@input)
+    end
+    rescue Timeout::Error => e
+      puts "Timeout!" + e.message
+      planet = "Can you repeat that more clearly please?"
+    end    
+
     if planet != "Sorry. I cannot find that planet."
       result = character
     else
@@ -129,7 +138,16 @@ post '/' do
     @input = @request_payload['request']['intent']['slots']['starship']['value']
     puts @input
 
-    starship = getStarship(@input)
+    starship = "none"
+    begin
+      Timeout::timeout(5) do
+      starship = getStarship(@input)
+    end
+    rescue Timeout::Error => e
+      puts "Timeout!" + e.message
+      starship = "Can you repeat that more clearly please?"
+    end    
+    
     if starship != "Sorry. I cannot find that starship."
       result = character
     else
