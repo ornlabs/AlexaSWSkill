@@ -36,3 +36,4 @@ build/
 config/local_env.yml
 
 marvel/marvel.rb
+/log
