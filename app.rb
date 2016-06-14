@@ -100,7 +100,7 @@ post '/' do
 
     character = "none"
     begin
-      Timeout::timeout(5) do
+      Timeout::timeout(7) do
       character = getCharacterName(@input)
     end 
     rescue Timeout::Error => e
@@ -125,7 +125,7 @@ post '/' do
 
     planet = "none"
     begin
-      Timeout::timeout(5) do
+      Timeout::timeout(7) do
       planet = getPlanet(@input)
     end
     rescue Timeout::Error => e
@@ -150,7 +150,7 @@ post '/' do
 
     starship = "none"
     begin
-      Timeout::timeout(5) do
+      Timeout::timeout(7) do
       starship = getStarship(@input)
     end
     rescue Timeout::Error => e
@@ -414,7 +414,7 @@ end
  
 def getCharacterInformation(intent, name)
   begin
-  Timeout::timeout(5) do
+  Timeout::timeout(7) do
     if intent == "height"
       return getCharacterHeight(name)
     elsif intent == "hair_color"
@@ -444,7 +444,7 @@ end
 
 def getPlanetInformation(intent, name)
   begin
-  Timeout::timeout(5) do
+  Timeout::timeout(7) do
     if intent == "orbital_period"
       return getPlanetOrbitalPeriod(name)
     elsif intent == "climate"
@@ -468,7 +468,7 @@ end
 
 def getStarshipInformation(intent, name)
   begin
-  Timeout::timeout(5) do
+  Timeout::timeout(7) do
     if intent == "manufacturer"
       return getStarshipManufacturer(name)
     elsif intent == "length"
