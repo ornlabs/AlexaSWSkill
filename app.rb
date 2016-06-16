@@ -73,8 +73,7 @@ post '/' do
 
     
     response = returnJSON("Goodbye. See you later...", true)
-    JSON.generate(response)
-
+    JSON.generate(response)  
   elsif intent == 'movie'
     puts "---NEW SESSION---"
     @input = @request_payload['request']['intent']['slots']['film']['value']
