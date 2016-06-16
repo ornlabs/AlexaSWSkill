@@ -202,7 +202,28 @@ def returnError()
       "shouldEndSession": "false"
     }
   }')
-end 
+end
+
+
+def returnHelp()
+    json = JSON.parse(
+    '{
+      "version": "1.0",
+      "response": {
+        "outputSpeech": {
+          "type": "PlainText",
+          "text": "This is your treasure trove of Star Wars knowledge. You can ask about characters, planets, starships, and films. For example, you can say: Tell me about LukeSkywalker. Then follow up with, How tall is he? What is his eye color? What films was he in? And so much more."
+        },
+      "reprompt": {
+          "outputSpeech": {
+          "type": "PlainText",
+          "text": "Anything else you want to know?"
+        }
+      }, 
+      "shouldEndSession": "false"
+      }
+    }')
+end  
 
 def to_sb(option)
   if option == true

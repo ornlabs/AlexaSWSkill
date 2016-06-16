@@ -253,6 +253,9 @@ post '/' do
       response = storeSessionAttribute(name, result, false, false)
       JSON.generate(response)
     end 
+  elsif intent == 'AMAZON.HelpIntent'
+    response = returnHelp()
+    JSON.generate(response)
   else
     response = returnError()
     JSON.generate(response)
