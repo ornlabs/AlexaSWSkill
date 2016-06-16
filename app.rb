@@ -30,7 +30,8 @@ post '/' do
       )
     rescue AlexaVerifier::VerificationError => e
       puts "Unable to verify request is valid and from Alexa.\n" + e.message
-      return ""
+      status 400
+      return "The request does not come from Alexa"
   end
 
 
