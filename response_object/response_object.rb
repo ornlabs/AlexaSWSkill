@@ -34,7 +34,13 @@ def returnIntroduction()
           "type": "PlainText",
           "text": "Welcome to Jedi Archives. What would you like to know?"
         },
-        "shouldEndSession": "false"
+      "reprompt": {
+          "outputSpeech": {
+          "type": "PlainText",
+          "text": "Would you like to know anything else?"
+        }
+      }, 
+      "shouldEndSession": "false"
       }
     }')
 end 
