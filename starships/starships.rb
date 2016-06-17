@@ -41,7 +41,7 @@ def getStarship(name)
       return "What do you want to know about " + starship['name'] + "?" 
     end 
   end 
-  return "Sorry. I cannot find that starship."
+  return "Sorry. I cannot find that starship. Anything else?"
 end
 
 def getStarshipManufacturer(name)
@@ -54,7 +54,7 @@ def getStarshipManufacturer(name)
       return "The manufacturer of " + name + " is " + starship['manufacturer'] + "." 
     end 
   end 
-  return "Sorry. I cannot find the manufacturer of that starship."
+  return "Sorry. I cannot find the manufacturer of that starship. Anything else?"
 end
 
 def getStarshipLength(name)
@@ -67,7 +67,7 @@ def getStarshipLength(name)
       return name + " is " + starship['length'] + " meters long." 
     end 
   end 
-  return "Sorry. I cannot find the length of that starship."
+  return "Sorry. I cannot find the length of that starship. Anything else?"
 end
 
 def getStarshipClass(name)
@@ -80,7 +80,7 @@ def getStarshipClass(name)
       return name + " belongs to the " + starship['starship_class'] + " class." 
     end 
   end 
-  return "Sorry. I cannot find the class of that starship."
+  return "Sorry. I cannot find the class of that starship. Anything else?"
 end
 
 def getStarshipCost(name)
@@ -97,7 +97,7 @@ def getStarshipCost(name)
 		end 
     end 
   end 
-  return "Sorry. I cannot find the cost of that starship."
+  return "Sorry. I cannot find the cost of that starship. Anything else?"
 end
 
 
@@ -115,7 +115,7 @@ def getStarshipSpeed(name)
     	end 
     end 
   end 
-  return "Sorry. I cannot find the class of that starship."
+  return "Sorry. I cannot find the class of that starship. Anything else?"
 end
 
 

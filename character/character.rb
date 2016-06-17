@@ -42,7 +42,7 @@ def getCharacterName(name)
       return "What do you want to know about " + name + " ?"
     end 
   end 
-  return "Sorry. I cannot find that character."
+  return "Sorry. I cannot find that character. Anything else?"
 end 
 
 
@@ -54,7 +54,7 @@ def getCharacterHeight(name)
       return "The height of " + name + " is " + character['height'] + ' centimeters. Anything else?'
     end 
   end 
-  return "Sorry. I cannot find that character's height."
+  return "Sorry. I cannot find that character's height. Anything else?"
 end 
 
 
@@ -71,7 +71,7 @@ def getCharacterHomeWorld(name)
     end 
   end 
 
-  return "Sorry. I cannot find the character's home world."
+  return "Sorry. I cannot find the character's home world. Anything else?"
 end
 
 def getCharacterFilms(name)
@@ -105,7 +105,7 @@ def getCharacterFilms(name)
     end 
   end 
 
-  return "Sorry. I cannot find the films the character has been in."
+  return "Sorry. I cannot find the films the character has been in. Anything else?"
 end
 
 
@@ -119,7 +119,7 @@ def getCharacterInfoString(characters, name)
       The character has " + character['hair_color'] + " hair and " + character['skin_color'] + " skin color."
     end 
   end 
-  return "Sorry. I cannot find that character."
+  return "Sorry. I cannot find that character. Anything else?"
 end 
 
 
@@ -132,7 +132,7 @@ def getCharacterInfoField(characters, name, option)
       return character[option]
     end 
   end 
-  return "Sorry. I cannot find that character."
+  return "Sorry. I cannot find that character. Anything else?"
 end 
 
 
@@ -148,7 +148,7 @@ def getCharacterHairColor(name)
       end 
     end 
   end 
-  return "Sorry. I cannot find that character's hair color."
+  return "Sorry. I cannot find that character's hair color. Anything else?"
 end 
 
 def getCharacterSkinColor(name)
@@ -159,7 +159,7 @@ def getCharacterSkinColor(name)
       return "The skin color of " + name + " is " + character['skin_color'] + '. Anything else?'
     end 
   end 
-  return "Sorry. I cannot find that character's skin color."
+  return "Sorry. I cannot find that character's skin color. Anything else?"
 end 
 
 def getCharacterBirthYear(name)
@@ -170,7 +170,7 @@ def getCharacterBirthYear(name)
       return "The birth year of " + name + " is " + character['birth_year'] + '. Anything else?'
     end 
   end 
-  return "Sorry. I cannot find that character's birth year."
+  return "Sorry. I cannot find that character's birth year. Anything else?"
 end 
 
 def getCharacterEyeColor(name)
@@ -181,7 +181,7 @@ def getCharacterEyeColor(name)
       return "The eye color of " + name + " is " + character['eye_color'] + '. Anything else?'
     end 
   end 
-  return "Sorry. I cannot find that character's eye color."
+  return "Sorry. I cannot find that character's eye color. Anything else?"
 end 
 
 def getCharacterSpecies(name)
@@ -199,6 +199,6 @@ def getCharacterSpecies(name)
     end 
   end 
 
-  return "Sorry. I cannot find the character's species."
+  return "Sorry. I cannot find the character's species. Anything else?"
 end
 

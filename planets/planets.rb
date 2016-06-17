@@ -39,7 +39,7 @@ def getPlanet(name)
       return "What do you want to know about " + planet['name'] + "?" 
     end 
   end 
-  return "Sorry. I cannot find that planet."
+  return "Sorry. I cannot find that planet. Anything else?"
 end
 
 def getPlanetOrbitalPeriod(name)
@@ -49,7 +49,7 @@ def getPlanetOrbitalPeriod(name)
       return "The orbital period of " + name + " is " + planet['orbital_period'] + ' days. Anything else?'
     end  
   end 
-  return "Sorry. I cannot find that planet's orbital period."
+  return "Sorry. I cannot find that planet's orbital period. Anything else?"
 end 
 
 def getPlanetClimate(name)
@@ -59,7 +59,7 @@ def getPlanetClimate(name)
       return "The climate of " + name + " is " + planet['climate'] + '. Anything else?'
     end  
   end 
-  return "Sorry. I cannot find that planet's climate."
+  return "Sorry. I cannot find that planet's climate. Anything else?"
 end 
 
 def getPlanetTerrain(name)
@@ -68,8 +68,8 @@ def getPlanetTerrain(name)
     if name.downcase == planet['name'].downcase
       return "The terrain of " + name + " is " + planet['terrain'] + '. Anything else?'
     end  
-  end 
-  return "Sorry. I cannot find that planet's terrain."
+  end  
+  return "Sorry. I cannot find that planet's terrain. Anything else?"
 end 
 
 def getPlanetPopulation(name)
@@ -79,7 +79,7 @@ def getPlanetPopulation(name)
       return "The population of " + name + " is " + planet['population'] + '. Anything else?'
     end  
   end 
-  return "Sorry. I cannot find that planet's population."
+  return "Sorry. I cannot find that planet's population. Anything else?"
 end 
 
 def getPlanetResidents(name)
@@ -118,5 +118,5 @@ def getPlanetResidents(name)
     end 
   end 
 
-  return "Sorry. I cannot find the residents of this planet."
+  return "Sorry. I cannot find the residents of this planet. Anything else?"
 end

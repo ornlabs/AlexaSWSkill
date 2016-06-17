@@ -22,7 +22,7 @@ def getFilmCrawl(films, title)
       return film['opening_crawl']
     end 
   end 
-  return "Sorry. I cannot find that film."
+  return "Sorry. I cannot find that film. Anything else?"
 end
 
 
@@ -43,7 +43,7 @@ def isMovie(title)
         return formattedFilm
     end
   else 
-    return "Sorry. I cannot find that film."
+    return "Sorry. I cannot find that film. Anything else?"
   end 
 end 
 
