@@ -2,7 +2,7 @@
 
 Here's the link to Alexa skills: <http://alexa.amazon.com>
 
-Name of the skill is Jedi Archives, with many thanks to Darren. 
+Name of the skill is Star Archives, with many thanks to Darren and Joe. 
 
 ## Characters
 
@@ -11,7 +11,7 @@ Here's the steps of the interaction:
 Say: 
 
 ```
-Alexa, ask Jedi Archives, tell me about Luke Skywalker
+Alexa, ask Star Archives, tell me about Luke Skywalker
 ```
 
 Alexa will make the POST request and an API call to the Star Wars API. 
@@ -37,7 +37,7 @@ You can also ask Alexa about movies as well:
 Say: 
 
 ```
-Alexa, ask Jedi Archives, tell me about A New Hope
+Alexa, ask Star Archives, tell me about A New Hope
 ```
 
 Alexa reads the opening crawl of the movie. 

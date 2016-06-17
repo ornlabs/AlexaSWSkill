@@ -32,7 +32,7 @@ def returnIntroduction()
       "response": {
         "outputSpeech": {
           "type": "PlainText",
-          "text": "Welcome to Jedi Archives. What would you like to know?"
+          "text": "Welcome to Star Archives. What would you like to know?"
         },
       "reprompt": {
           "outputSpeech": {
