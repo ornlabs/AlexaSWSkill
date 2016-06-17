@@ -182,7 +182,7 @@ post '/' do
       starship = @request_payload['session']['attributes']['starship']
       puts starship
       if (!starship)
-        result = "You asked for something that is not applicable to what you want to know. What would you like to know?"
+        result = "You asked for something that is not applicable to what you want to know. What would you like to know about?"
         response = startSessionAttribute(result, false, false)
         JSON.generate(response)
       else 
@@ -209,7 +209,7 @@ post '/' do
     puts planet
 
     if (!planet)
-      result = "You asked for something that is not applicable to what you want to know. What would you like to know?"
+      result = "You asked for something that is not applicable to what you want to know. What would you like to know about?"
       response = startSessionAttribute(result, false, false)
       JSON.generate(response)
     else
@@ -240,7 +240,7 @@ post '/' do
     puts name
 
     if (!name)
-      result = "You asked for something that is not applicable to what you want to know. What would you like to know?"
+      result = "You asked for something that is not applicable to what you want to know. What would you like to know about?"
       response = startSessionAttribute(result, false, false)
       JSON.generate(response)
     else 
